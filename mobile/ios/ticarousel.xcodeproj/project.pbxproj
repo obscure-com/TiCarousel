@@ -24,10 +24,13 @@
 /* Begin PBXBuildFile section */
 		24DD6CF91134B3F500162E58 /* ComObscureTiCarouselModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */; };
 		24DD6CFA1134B3F500162E58 /* ComObscureTiCarouselModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */; };
-		24DE9E1111C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.h */; };
-		24DE9E1211C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.mm */; };
 		AA747D9F0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D60155C1ADA0053A8FA /* iCarousel.h */; };
+		DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D61155C1ADA0053A8FA /* iCarousel.m */; };
+		DAEF8D65155C1B0F0053A8FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */; };
+		DAEF8D67155C1B140053A8FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D66155C1B140053A8FA /* UIKit.framework */; };
+		DAEF8D69155C1B1A0053A8FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,19 +39,22 @@
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "ticarousel";
+			remoteInfo = ticarousel;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ComObscureTiCarouselModule.h"; path = "Classes/ComObscureTiCarouselModule.h"; sourceTree = "<group>"; };
-		24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ComObscureTiCarouselModule.m"; path = "Classes/ComObscureTiCarouselModule.m"; sourceTree = "<group>"; };
+		24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComObscureTiCarouselModule.h; path = Classes/ComObscureTiCarouselModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComObscureTiCarouselModule.m; path = Classes/ComObscureTiCarouselModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
-		24DE9E0F11C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ComObscureTiCarouselModuleAssets.h"; path = "Classes/ComObscureTiCarouselModuleAssets.h"; sourceTree = "<group>"; };
-		24DE9E1011C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ComObscureTiCarouselModuleAssets.mm"; path = "Classes/ComObscureTiCarouselModuleAssets.mm"; sourceTree = "<group>"; };
-		AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ComObscureTiCarousel_Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComObscureTiCarousel_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libComObscureTiCarousel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libComObscureTiCarousel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libComObscureTiCarousel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComObscureTiCarousel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAEF8D60155C1ADA0053A8FA /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = vendor/iCarousel/iCarousel/iCarousel.h; sourceTree = "<group>"; };
+		DAEF8D61155C1ADA0053A8FA /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = vendor/iCarousel/iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAEF8D66155C1B140053A8FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF8D69155C1B1A0053A8FA /* CoreGraphics.framework in Frameworks */,
+				DAEF8D67155C1B140053A8FA /* UIKit.framework in Frameworks */,
+				DAEF8D65155C1B0F0053A8FA /* QuartzCore.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,14 +86,18 @@
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				DAEF8D5E155C1AB60053A8FA /* Vendor */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
-			name = "ticarousel";
+			name = ticarousel;
 			sourceTree = "<group>";
 		};
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */,
+				DAEF8D66155C1B140053A8FA /* UIKit.framework */,
+				DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -93,8 +106,6 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				24DE9E0F11C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.h */,
-				24DE9E1011C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.mm */,
 				24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */,
 				24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */,
 			);
@@ -110,6 +121,23 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		DAEF8D5E155C1AB60053A8FA /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF8D5F155C1ABF0053A8FA /* iCarousel */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		DAEF8D5F155C1ABF0053A8FA /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF8D60155C1ADA0053A8FA /* iCarousel.h */,
+				DAEF8D61155C1ADA0053A8FA /* iCarousel.m */,
+			);
+			name = iCarousel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -119,7 +147,7 @@
 			files = (
 				AA747D9F0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComObscureTiCarouselModule.h in Headers */,
-				24DE9E1111C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.h in Headers */,
+				DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +166,8 @@
 			);
 			dependencies = (
 			);
-			name = "ticarousel";
-			productName = "ticarousel";
+			name = ticarousel;
+			productName = ticarousel;
 			productReference = D2AAC07E0554694100DB518D /* libComObscureTiCarousel.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -191,7 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24DD6CFA1134B3F500162E58 /* ComObscureTiCarouselModule.m in Sources */,
-				24DE9E1211C5FE74003F90F6 /* ComObscureTiCarouselModuleAssets.mm in Sources */,
+				DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,11 +249,11 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DSTROOT = "/tmp/ComObscureTiCarousel.dst";
+				DSTROOT = /tmp/ComObscureTiCarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComObscureTiCarousel_Prefix.pch";
+				GCC_PREFIX_HEADER = ComObscureTiCarousel_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -244,7 +272,7 @@
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComObscureTiCarousel";
+				PRODUCT_NAME = ComObscureTiCarousel;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -267,11 +295,11 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DSTROOT = "/tmp/ComObscureTiCarousel.dst";
+				DSTROOT = /tmp/ComObscureTiCarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComObscureTiCarousel_Prefix.pch";
+				GCC_PREFIX_HEADER = ComObscureTiCarousel_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -288,7 +316,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComObscureTiCarousel";
+				PRODUCT_NAME = ComObscureTiCarousel;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -310,11 +338,11 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DSTROOT = "/tmp/ComObscureTiCarousel.dst";
+				DSTROOT = /tmp/ComObscureTiCarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComObscureTiCarousel_Prefix.pch";
+				GCC_PREFIX_HEADER = ComObscureTiCarousel_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -332,7 +360,7 @@
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComObscureTiCarousel";
+				PRODUCT_NAME = ComObscureTiCarousel;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -355,11 +383,11 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				DSTROOT = "/tmp/ComObscureTiCarousel.dst";
+				DSTROOT = /tmp/ComObscureTiCarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComObscureTiCarousel_Prefix.pch";
+				GCC_PREFIX_HEADER = ComObscureTiCarousel_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -375,7 +403,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComObscureTiCarousel";
+				PRODUCT_NAME = ComObscureTiCarousel;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";

@@ -4,7 +4,7 @@
 #
 version: 1.0
 apiversion: 2
-description: module that wraps the iCarousel library by Nick Lockwook (https://github.com/nicklockwood/iCarousel)
+description: module that wraps the iCarousel library by Nick Lockwood 
 author: Paul Mietz Egli
 license: Apache License 2.0
 copyright: © 2012 Paul Mietz Egli
