@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TiViewProxy.h"
+#import "iCarousel.h"
 
-@interface ComObscureTiCarouselCarouselViewProxy : TiViewProxy
+@interface ComObscureTiCarouselCarouselViewProxy : TiViewProxy <iCarouselDataSource>
 
 @end
