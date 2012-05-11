@@ -16,13 +16,22 @@ Ti.API.info("module is => " + TiCarousel);
 var label = Ti.UI.createLabel({ text: 'status' });
 win.add(label);
 
+var views = [];
+views.push(Ti.UI.createView({ height: 60, width: 30, backgroundColor: 'blue' }));
+views.push(Ti.UI.createView({ height: 60, width: 50, backgroundColor: 'yellow' }));
+views.push(Ti.UI.createView({ height: 60, width: 40, backgroundColor: 'red' }));
+views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }));
+views.push(Ti.UI.createView({ height: 60, width: 20, backgroundColor: 'gray' }));
+
 var view = TiCarousel.createCarouselView({
-  backgroundColor: 'yellow',
+  views: views,
+  backgroundColor: '#ccc',
   width: Ti.UI.FILL,
   height: 200,
+  horizontalPadding: 30,
 });
 view.addEventListener('scroll', function(e) {
-  label.text = JSON.stringify(e);
+  label.text = String.format('scrolled to %d', e.currentPage)
 })
 win.add(view);
 

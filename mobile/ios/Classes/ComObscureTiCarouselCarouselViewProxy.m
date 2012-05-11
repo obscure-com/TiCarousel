@@ -18,41 +18,81 @@ NSArray * carouselKeySequence;
 
 @implementation ComObscureTiCarouselCarouselViewProxy
 
-// probably manage the views here
-
 - (void)dealloc {
     RELEASE_TO_NIL(carouselKeySequence)
+
+    // clean up views
+	pthread_rwlock_destroy(&viewsLock);
+	[viewProxies makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
+	[viewProxies release];
     [super dealloc];
 }
 
-- (NSArray *)keySequence {
-    if (!carouselKeySequence) {
-        carouselKeySequence = [NSArray arrayWithObjects:nil]; // TODO custom properties
-    }
-    return carouselKeySequence;
+#pragma mark View Management
+
+- (void)lockViews {
+	pthread_rwlock_rdlock(&viewsLock);
+}
+
+- (void)lockViewsForWriting {
+	pthread_rwlock_wrlock(&viewsLock);
+}
+
+- (void)unlockViews {
+	pthread_rwlock_unlock(&viewsLock);
+}
+
+#pragma mark Public API
+
+- (void)setViews:(id)args {
+	ENSURE_ARRAY(args);
+	for (id newViewProxy in args) {
+		[self rememberProxy:newViewProxy];
+		[newViewProxy setParent:self];
+	}
+	[self lockViewsForWriting];
+	for (id oldViewProxy in viewProxies) {
+		if (![args containsObject:oldViewProxy]) {
+			[oldViewProxy setParent:nil];
+			TiThreadPerformOnMainThread(^{[oldViewProxy detachView];}, NO);
+			[self forgetProxy:oldViewProxy];
+		}
+	}
+	[viewProxies autorelease];
+	viewProxies = [args mutableCopy];
+	[self unlockViews];
+	[self replaceValue:args forKey:@"views" notification:YES];
+}
+
+/*
+ * padding between views
+ */
+- (void)setHorizontalPadding:(id)arg {
+    horizontalPadding = [TiUtils intValue:arg];
 }
 
 #pragma mark -
 #pragma mark iCarouselDataSource
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return 5;
+    return [viewProxies count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)_view {
-    if (!_view) {
-        // temporary test view
-        _view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)] autorelease];
-        _view.backgroundColor = [UIColor greenColor];
-    }
-    return _view;
+    // since we build the views in js-land, we don't reuse anything here
+    TiViewProxy * proxy = [viewProxies objectAtIndex:index];
+    return proxy.view;
 }
 
 #pragma mark -
 #pragma mark iCarouselDelegate
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel {
-    return 45;
+    NSInteger max = 0;
+    for (TiViewProxy * proxy in viewProxies) {
+        max = MAX(max, proxy.view.bounds.size.width);
+    }
+    return max + horizontalPadding;
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
