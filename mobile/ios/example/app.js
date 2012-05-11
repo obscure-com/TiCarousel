@@ -8,32 +8,15 @@
 var win = Ti.UI.createWindow({
 	backgroundColor:'white'
 });
-var label = Ti.UI.createLabel();
-win.add(label);
+
+var TiCarousel = require('com.obscure.TiCarousel');
+Ti.API.info("module is => " + TiCarousel);
+
+var view = TiCarousel.createCarouselView({
+  backgroundColor: 'yellow',
+  width: Ti.UI.FILL,
+  height: 200,
+});
+win.add(view);
+
 win.open();
-
-// TODO: write your module tests here
-var ticarousel = require('com.obscure.TiCarousel');
-Ti.API.info("module is => " + ticarousel);
-
-label.text = ticarousel.example();
-
-Ti.API.info("module exampleProp is => " + ticarousel.exampleProp);
-ticarousel.exampleProp = "This is a test value";
-
-if (Ti.Platform.name == "android") {
-	var proxy = ticarousel.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
-
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
-}
-

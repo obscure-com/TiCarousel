@@ -7,7 +7,4 @@
 #import "TiModule.h"
 
 @interface ComObscureTiCarouselModule : TiModule 
-{
-}
-
 @end

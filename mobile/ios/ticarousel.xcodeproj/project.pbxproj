@@ -31,6 +31,10 @@
 		DAEF8D65155C1B0F0053A8FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */; };
 		DAEF8D67155C1B140053A8FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D66155C1B140053A8FA /* UIKit.framework */; };
 		DAEF8D69155C1B1A0053A8FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */; };
+		DAEF8D6C155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D6A155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h */; };
+		DAEF8D6D155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6B155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m */; };
+		DAEF8D70155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D6E155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h */; };
+		DAEF8D71155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6F155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAEF8D66155C1B140053A8FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAEF8D6A155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComObscureTiCarouselCarouselViewProxy.h; path = Classes/ComObscureTiCarouselCarouselViewProxy.h; sourceTree = "<group>"; };
+		DAEF8D6B155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComObscureTiCarouselCarouselViewProxy.m; path = Classes/ComObscureTiCarouselCarouselViewProxy.m; sourceTree = "<group>"; };
+		DAEF8D6E155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComObscureTiCarouselCarouselView.h; path = Classes/ComObscureTiCarouselCarouselView.h; sourceTree = "<group>"; };
+		DAEF8D6F155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComObscureTiCarouselCarouselView.m; path = Classes/ComObscureTiCarouselCarouselView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,10 @@
 			children = (
 				24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */,
 				24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */,
+				DAEF8D6A155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h */,
+				DAEF8D6B155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m */,
+				DAEF8D6E155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h */,
+				DAEF8D6F155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -148,6 +160,8 @@
 				AA747D9F0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComObscureTiCarouselModule.h in Headers */,
 				DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */,
+				DAEF8D6C155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h in Headers */,
+				DAEF8D70155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +234,8 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* ComObscureTiCarouselModule.m in Sources */,
 				DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */,
+				DAEF8D6D155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m in Sources */,
+				DAEF8D71155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
