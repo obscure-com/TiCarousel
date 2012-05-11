@@ -24,3 +24,5 @@ See the Wiki pages for usage instructions and the samples directory for example 
 ## Development Status
 
 **initial implementation**
+
+Currently, a carousel can be created with views that are defined in JavaScript.  Whee!
