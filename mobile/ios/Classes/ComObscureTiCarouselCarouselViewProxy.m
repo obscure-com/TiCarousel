@@ -12,11 +12,26 @@
 #define kCarouselEventObjectName @"carousel"
 #define kCarouselScrollEvent @"scroll"
 #define kCarouselChangeEvent @"change"
+#define kCarouselSelectEvent @"select"
 
 NSArray * carouselKeySequence;
 
 
 @implementation ComObscureTiCarouselCarouselViewProxy
+
+@synthesize horizontalPadding=_horizontalPadding;
+@synthesize numberOfVisibleItems=_numberOfVisibleItems;
+@synthesize wrap=_wrap;
+@synthesize doubleSided=_doubleSided;
+
+- (id)init {
+    if (self = [super init]) {
+        self.horizontalPadding = 0;
+        self.numberOfVisibleItems = 3;
+        self.doubleSided = YES;
+    }
+    return self;
+}
 
 - (void)dealloc {
     RELEASE_TO_NIL(carouselKeySequence)
@@ -42,13 +57,17 @@ NSArray * carouselKeySequence;
 	pthread_rwlock_unlock(&viewsLock);
 }
 
+#pragma mark -
 #pragma mark Public API
+
+#pragma mark Titanium-specific Methods
 
 - (void)setViews:(id)args {
 	ENSURE_ARRAY(args);
 	for (id newViewProxy in args) {
 		[self rememberProxy:newViewProxy];
 		[newViewProxy setParent:self];
+        [newViewProxy view].layer.doubleSided = self.doubleSided;
 	}
 	[self lockViewsForWriting];
 	for (id oldViewProxy in viewProxies) {
@@ -64,12 +83,10 @@ NSArray * carouselKeySequence;
 	[self replaceValue:args forKey:@"views" notification:YES];
 }
 
-/*
- * padding between views
- */
-- (void)setHorizontalPadding:(id)arg {
-    horizontalPadding = [TiUtils intValue:arg];
-}
+// TODO placeholders
+
+
+#pragma mark iCarousel Methods
 
 // both scrollToItemAtIndex variants are supported:
 // - (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated;
@@ -122,6 +139,10 @@ NSArray * carouselKeySequence;
     return [viewProxies count];
 }
 
+- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel {
+    return self.numberOfVisibleItems;
+}
+
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)_view {
     // since we build the views in js-land, we don't reuse anything here
     TiViewProxy * proxy = [viewProxies objectAtIndex:index];
@@ -136,21 +157,32 @@ NSArray * carouselKeySequence;
     for (TiViewProxy * proxy in viewProxies) {
         max = MAX(max, proxy.view.bounds.size.width);
     }
-    return max + horizontalPadding;
+    return max + self.horizontalPadding;
+}
+
+- (BOOL)carouselShouldWrap:(iCarousel *)carousel {
+    return self.wrap;
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [NSNumber numberWithInteger:carousel.currentItemIndex], @"currentPage",
+                          NUMINT(carousel.currentItemIndex), @"currentPage",
                           nil];
     [self fireEvent:kCarouselScrollEvent withObject:obj];
 }
 
 - (void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [NSNumber numberWithInteger:carousel.currentItemIndex], @"currentPage",
+                          NUMINT(carousel.currentItemIndex), @"currentPage",
                           nil];
     [self fireEvent:kCarouselChangeEvent withObject:obj];
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+    NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
+                          NUMINT(index), @"selectedIndex",
+                          nil];
+    [self fireEvent:kCarouselSelectEvent withObject:obj];
 }
 
 @end

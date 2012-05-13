@@ -13,6 +13,9 @@
 @interface ComObscureTiCarouselCarouselViewProxy : TiViewProxy <iCarouselDataSource,iCarouselDelegate> {
 	pthread_rwlock_t viewsLock;
     NSArray * viewProxies;
-    NSInteger horizontalPadding;
 }
+@property (nonatomic, assign) NSInteger horizontalPadding;
+@property (nonatomic, assign) NSUInteger numberOfVisibleItems;
+@property (nonatomic, assign) BOOL wrap;
+@property (nonatomic, assign) BOOL doubleSided;
 @end
