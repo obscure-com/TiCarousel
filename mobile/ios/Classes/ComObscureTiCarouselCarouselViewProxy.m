@@ -71,6 +71,50 @@ NSArray * carouselKeySequence;
     horizontalPadding = [TiUtils intValue:arg];
 }
 
+// both scrollToItemAtIndex variants are supported:
+// - (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated;
+// - (void)scrollToItemAtIndex:(NSInteger)index duration:(NSTimeInterval)scrollDuration;
+- (void)scrollToIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] scrollToIndex:args];
+}
+
+// - (void)scrollByNumberOfItems:(NSInteger)itemCount duration:(NSTimeInterval)duration;
+- (void)scrollByNumberOfItems:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] scrollByNumberOfItems:args];
+}
+
+- (void)reloadData:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] reloadData:args];
+}
+
+- (id)itemViewAtIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] itemViewAtIndex:args];
+}
+
+- (id)indexOfItemView:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] indexOfItemView:args];
+}
+
+- (id)indexOfItemViewOrSubview:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] indexOfItemViewOrSubview:args];
+}
+
+- (id)offsetForItemAtIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] offsetForItemAtIndex:args];
+}
+
+- (id)removeItemAtIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] removeItemAtIndex:args];
+}
+
+- (id)insertItemAtIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] insertItemAtIndex:args];
+}
+
+- (id)reloadItemAtIndex:(id)args {
+    [(ComObscureTiCarouselCarouselView *)[self view] reloadItemAtIndex:args];
+}
+
 #pragma mark -
 #pragma mark iCarouselDataSource
 

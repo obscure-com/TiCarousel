@@ -24,6 +24,7 @@ views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' })
 views.push(Ti.UI.createView({ height: 60, width: 20, backgroundColor: 'gray' }));
 
 var view = TiCarousel.createCarouselView({
+  carouselType: TiCarousel.CAROUSEL_TYPE_CYLINDER,
   views: views,
   backgroundColor: '#ccc',
   width: Ti.UI.FILL,
@@ -36,3 +37,7 @@ view.addEventListener('scroll', function(e) {
 win.add(view);
 
 win.open();
+
+setTimeout(function() {
+  view.scrollToIndex(3);
+}, 5000);

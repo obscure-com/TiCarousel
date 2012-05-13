@@ -8,6 +8,7 @@
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
+#import "iCarousel.h"
 
 @implementation ComObscureTiCarouselModule
 
@@ -44,5 +45,19 @@
 -(void)didReceiveMemoryWarning:(NSNotification*)notification {
 	[super didReceiveMemoryWarning:notification];
 }
+
+#pragma mark Constants
+
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_LINEAR, iCarouselTypeLinear)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_ROTARY, iCarouselTypeRotary)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_ROTARY, iCarouselTypeInvertedRotary)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_CYLINDER, iCarouselTypeCylinder)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_CYLINDER, iCarouselTypeInvertedCylinder)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_WHEEL, iCarouselTypeWheel)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_WHEEL, iCarouselTypeInvertedWheel)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_COVER_FLOW, iCarouselTypeCoverFlow)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_COVER_FLOW2, iCarouselTypeCoverFlow2)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_TIME_MACHINE, iCarouselTypeTimeMachine)
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_TIME_MACHINE, iCarouselTypeInvertedTimeMachine)
 
 @end
