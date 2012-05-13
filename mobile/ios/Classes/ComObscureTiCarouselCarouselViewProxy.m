@@ -166,14 +166,14 @@ NSArray * carouselKeySequence;
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          NUMINT(carousel.currentItemIndex), @"currentPage",
+                          NUMINT(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselScrollEvent withObject:obj];
 }
 
 - (void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          NUMINT(carousel.currentItemIndex), @"currentPage",
+                          NUMINT(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselChangeEvent withObject:obj];
 }
