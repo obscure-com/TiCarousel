@@ -23,22 +23,29 @@ views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'red' }));
 views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }));
 views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'gray' }));
 
-var view = TiCarousel.createCarouselView({
-  carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
-  views: views,
+var carousel = TiCarousel.createCarouselView({
+  carouselType: TiCarousel.CAROUSEL_TYPE_CUSTOM,
   backgroundColor: '#ccc',
   width: Ti.UI.FILL,
   height: 200,
-  horizontalPadding: 30,
+  itemWidth: 68,
   numberOfVisibleItems: 5,
 });
-view.addEventListener('scroll', function(e) {
+carousel.addEventListener('scroll', function(e) {
   label.text = String.format('scrolled to %d', e.currentIndex)
 })
-win.add(view);
+win.add(carousel);
+
+win.addEventListener('open', function(e) {
+  carousel.setViews(views);
+  carousel.reloadData();
+  carousel.scrollToIndex(3);
+})
 
 win.open();
 
+/*
 setTimeout(function() {
-  view.scrollToIndex(3);
+  carousel.scrollToIndex(3);
 }, 5000);
+*/
