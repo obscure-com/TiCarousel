@@ -17,22 +17,23 @@ var label = Ti.UI.createLabel({ text: 'status' });
 win.add(label);
 
 var views = [];
-views.push(Ti.UI.createView({ height: 60, width: 30, backgroundColor: 'blue' }));
-views.push(Ti.UI.createView({ height: 60, width: 50, backgroundColor: 'yellow' }));
-views.push(Ti.UI.createView({ height: 60, width: 40, backgroundColor: 'red' }));
+views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'blue' }));
+views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'yellow' }));
+views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'red' }));
 views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }));
-views.push(Ti.UI.createView({ height: 60, width: 20, backgroundColor: 'gray' }));
+views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'gray' }));
 
 var view = TiCarousel.createCarouselView({
-  carouselType: TiCarousel.CAROUSEL_TYPE_CYLINDER,
+  carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
   views: views,
   backgroundColor: '#ccc',
   width: Ti.UI.FILL,
   height: 200,
   horizontalPadding: 30,
+  numberOfVisibleItems: 5,
 });
 view.addEventListener('scroll', function(e) {
-  label.text = String.format('scrolled to %d', e.currentPage)
+  label.text = String.format('scrolled to %d', e.currentIndex)
 })
 win.add(view);
 
