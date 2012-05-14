@@ -7,7 +7,6 @@
 //
 
 #import "ComObscureTiCarouselCarouselView.h"
-#import "TiRect.h"
 
 #define kCarouselEventObjectName @"carousel"
 #define kCarouselScrollEvent @"scroll"
@@ -77,27 +76,27 @@
 }
 
 - (void)setContentOffset_:(id)val {
-    ENSURE_TYPE(val, TiRect)
-    TiRect * rect = (TiRect *)val;
-    self.carousel.contentOffset = rect.rect.size;
+    ENSURE_TYPE(val, NSDictionary)
+    self.carousel.contentOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
 }
 
 - (id)contentOffset_ {
-    TiRect * result = [[TiRect alloc] init];
-    result.rect = CGRectMake(0, 0, self.carousel.contentOffset.width, self.carousel.contentOffset.height);
-    return result;
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            NUMFLOAT(self.carousel.contentOffset.width), @"width",
+            NUMFLOAT(self.carousel.contentOffset.height), @"height",
+            nil];
 }
 
 - (void)setViewpointOffset_:(id)val {
-    ENSURE_TYPE(val, TiRect)
-    TiRect * rect = (TiRect *)val;
-    self.carousel.viewpointOffset = rect.rect.size;
+    ENSURE_TYPE(val, NSDictionary)
+    self.carousel.viewpointOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
 }
 
 - (id)viewpointOffset_ {
-    TiRect * result = [[TiRect alloc] init];
-    result.rect = CGRectMake(0, 0, self.carousel.viewpointOffset.width, self.carousel.viewpointOffset.height);
-    return result;
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            NUMFLOAT(self.carousel.viewpointOffset.width), @"width",
+            NUMFLOAT(self.carousel.viewpointOffset.height), @"height",
+            nil];
 }
 
 - (void)setDecelerationRate_:(id)val {
