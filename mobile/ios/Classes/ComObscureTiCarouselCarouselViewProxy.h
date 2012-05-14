@@ -14,7 +14,7 @@
 	pthread_rwlock_t viewsLock;
     NSArray * viewProxies;
 }
-@property (nonatomic, assign) NSInteger horizontalPadding;
+@property (nonatomic, assign) NSInteger itemWidth;
 @property (nonatomic, assign) NSUInteger numberOfVisibleItems;
 @property (nonatomic, assign) BOOL wrap;
 @property (nonatomic, assign) BOOL doubleSided;

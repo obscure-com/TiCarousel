@@ -17,14 +17,14 @@
 
 @implementation ComObscureTiCarouselCarouselViewProxy
 
-@synthesize horizontalPadding=_horizontalPadding;
+@synthesize itemWidth=_itemWidth;
 @synthesize numberOfVisibleItems=_numberOfVisibleItems;
 @synthesize wrap=_wrap;
 @synthesize doubleSided=_doubleSided;
 
 - (id)init {
     if (self = [super init]) {
-        self.horizontalPadding = 0;
+        self.itemWidth = 0;
         self.numberOfVisibleItems = 3;
         self.doubleSided = YES;
     }
@@ -62,14 +62,11 @@
 	ENSURE_ARRAY(args);
 	for (id newViewProxy in args) {
 		[self rememberProxy:newViewProxy];
-		[newViewProxy setParent:self];
         [newViewProxy view].layer.doubleSided = self.doubleSided;
 	}
 	[self lockViewsForWriting];
 	for (id oldViewProxy in viewProxies) {
 		if (![args containsObject:oldViewProxy]) {
-			[oldViewProxy setParent:nil];
-			TiThreadPerformOnMainThread(^{[oldViewProxy detachView];}, NO);
 			[self forgetProxy:oldViewProxy];
 		}
 	}
@@ -159,11 +156,7 @@
 #pragma mark iCarouselDelegate
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel {
-    NSInteger max = 0;
-    for (TiViewProxy * proxy in viewProxies) {
-        max = MAX(max, proxy.view.bounds.size.width);
-    }
-    return max + self.horizontalPadding;
+    return self.itemWidth;
 }
 
 - (BOOL)carouselShouldWrap:(iCarousel *)carousel {
