@@ -14,8 +14,6 @@
 #define kCarouselChangeEvent @"change"
 #define kCarouselSelectEvent @"select"
 
-NSArray * carouselKeySequence;
-
 
 @implementation ComObscureTiCarouselCarouselViewProxy
 
@@ -34,8 +32,6 @@ NSArray * carouselKeySequence;
 }
 
 - (void)dealloc {
-    RELEASE_TO_NIL(carouselKeySequence)
-
     // clean up views
 	pthread_rwlock_destroy(&viewsLock);
 	[viewProxies makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
@@ -81,6 +77,16 @@ NSArray * carouselKeySequence;
 	viewProxies = [args mutableCopy];
 	[self unlockViews];
 	[self replaceValue:args forKey:@"views" notification:YES];
+}
+
+-(void)childWillResize:(TiViewProxy *)child {
+	BOOL hasChild = [[self children] containsObject:child];
+    
+	if (!hasChild) {
+		return;
+		//In the case of views added with addView, as they are not part of children, they should be ignored.
+	}
+	[super childWillResize:child];
 }
 
 // TODO placeholders
@@ -162,6 +168,17 @@ NSArray * carouselKeySequence;
 
 - (BOOL)carouselShouldWrap:(iCarousel *)carousel {
     return self.wrap;
+}
+
+- (CATransform3D)carousel:(iCarousel *)_carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform {
+    // TODO make a custom subtype and switch here
+    if (ABS(offset) < 1.0f) {
+        transform = CATransform3DTranslate(transform, offset * _carousel.itemWidth, ABS(offset) * -70.0f, ABS(offset) * -400.0f);
+    }
+    else {
+        transform = CATransform3DTranslate(transform, offset * _carousel.itemWidth, -70.0f, -400.0f);
+    }
+    return transform;
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {

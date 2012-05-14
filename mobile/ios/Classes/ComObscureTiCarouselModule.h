@@ -5,6 +5,7 @@
  * and licensed under the Apache Public License (version 2)
  */
 #import "TiModule.h"
+#import "iCarousel.h"
 
 @interface ComObscureTiCarouselModule : TiModule 
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_LINEAR;
@@ -18,4 +19,5 @@
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_COVER_FLOW2;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_TIME_MACHINE;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_INVERTED_TIME_MACHINE;
+@property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_CUSTOM;
 @end
