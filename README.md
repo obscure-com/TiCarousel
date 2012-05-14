@@ -23,6 +23,11 @@ See the Wiki pages for usage instructions and the samples directory for example 
 
 ## Development Status
 
-**initial implementation**
+**first pass complete**
 
-Currently, a carousel can be created with views that are defined in JavaScript.  Whee!
+Carousels can be created and added to a view.  I was stuck for a while on a problem that occurred
+when views were set after carousel creation using the setViews() method, but I think that's working
+ok now.
+
+Next steps are to put together a sample app and add custom carousel transform handling to the
+module.
