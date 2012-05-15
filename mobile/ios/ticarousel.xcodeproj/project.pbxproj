@@ -26,6 +26,8 @@
 		24DD6CFA1134B3F500162E58 /* ComObscureTiCarouselModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */; };
 		AA747D9F0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		DAA4DCA51562AFA000192EA3 /* TransformParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA4DCA31562AFA000192EA3 /* TransformParser.h */; };
+		DAA4DCA61562AFA000192EA3 /* TransformParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4DCA41562AFA000192EA3 /* TransformParser.m */; };
 		DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D60155C1ADA0053A8FA /* iCarousel.h */; };
 		DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D61155C1ADA0053A8FA /* iCarousel.m */; };
 		DAEF8D65155C1B0F0053A8FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */; };
@@ -54,6 +56,8 @@
 		AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComObscureTiCarousel_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComObscureTiCarousel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComObscureTiCarousel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA4DCA31562AFA000192EA3 /* TransformParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransformParser.h; path = Classes/TransformParser.h; sourceTree = "<group>"; };
+		DAA4DCA41562AFA000192EA3 /* TransformParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransformParser.m; path = Classes/TransformParser.m; sourceTree = "<group>"; };
 		DAEF8D60155C1ADA0053A8FA /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = vendor/iCarousel/iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		DAEF8D61155C1ADA0053A8FA /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = vendor/iCarousel/iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -120,6 +124,8 @@
 				DAEF8D6B155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m */,
 				DAEF8D6E155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h */,
 				DAEF8D6F155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m */,
+				DAA4DCA31562AFA000192EA3 /* TransformParser.h */,
+				DAA4DCA41562AFA000192EA3 /* TransformParser.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -162,6 +168,7 @@
 				DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */,
 				DAEF8D6C155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h in Headers */,
 				DAEF8D70155C1F030053A8FA /* ComObscureTiCarouselCarouselView.h in Headers */,
+				DAA4DCA51562AFA000192EA3 /* TransformParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +243,7 @@
 				DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */,
 				DAEF8D6D155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.m in Sources */,
 				DAEF8D71155C1F030053A8FA /* ComObscureTiCarouselCarouselView.m in Sources */,
+				DAA4DCA61562AFA000192EA3 /* TransformParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "ComObscureTiCarouselCarouselViewProxy.h"
 #import "ComObscureTiCarouselCarouselView.h"
+#import "TransformParser.h"
 
 #define kCarouselEventObjectName @"carousel"
 #define kCarouselScrollEvent @"scroll"
@@ -21,6 +22,8 @@
 @synthesize numberOfVisibleItems=_numberOfVisibleItems;
 @synthesize wrap=_wrap;
 @synthesize doubleSided=_doubleSided;
+@synthesize itemTransformForOffset=_itemTransformForOffset;
+@synthesize itemAlphaForOffset=_itemAlphaForOffset;
 
 - (id)init {
     if (self = [super init]) {
@@ -163,14 +166,19 @@
     return self.wrap;
 }
 
+- (CGFloat)carousel:(iCarousel *)carousel itemAlphaForOffset:(CGFloat)offset {
+    CGFloat result = 1.0f;
+    if (self.itemAlphaForOffset) {
+        NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
+        result = [[self.itemAlphaForOffset call:args thisObject:nil] floatValue];
+    }
+    return result;
+}
+
 - (CATransform3D)carousel:(iCarousel *)_carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform {
-    // TODO make a custom subtype and switch here
-    if (ABS(offset) < 1.0f) {
-        transform = CATransform3DTranslate(transform, offset * _carousel.itemWidth, ABS(offset) * -70.0f, ABS(offset) * -400.0f);
-    }
-    else {
-        transform = CATransform3DTranslate(transform, offset * _carousel.itemWidth, -70.0f, -400.0f);
-    }
+    NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
+    NSArray * result = [self.itemTransformForOffset call:args thisObject:nil];
+    transform = [TransformParser addTransforms:result toTransform:transform];
     return transform;
 }
 
