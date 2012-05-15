@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="welcome">Welcome to %s!</string>
+  <string name="typeButton_label">Change Type</string>
+  <string name="wrapButton_label_off">Wrap: OFF</string>
+  <string name="wrapButton_label_on">Wrap: ON</string>
+  
+  <string name="type_LINEAR">Linear</string>
+  <string name="type_ROTARY">Rotary</string>
+  <string name="type_INVERTED_ROTARY">Inverted Rotary</string>
+  <string name="type_CYLINDER">Cylinder</string>
+  <string name="type_INVERTED_CYLINDER">Inverted Cylinder</string>
+  <string name="type_WHEEL">Wheel</string>
+  <string name="type_INVERTED_WHEEL">Inverted Wheel</string>
+  <string name="type_COVER_FLOW">CoverFlow</string>
+  <string name="type_COVER_FLOW2">CoverFlow2</string>
+  <string name="type_TIME_MACHINE">Time Machine</string>
+  <string name="type_INVERTED_TIME_MACHINE">Inverted Time Machine</string>
+
 </resources>
