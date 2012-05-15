@@ -16,8 +16,8 @@
 }
 @property (nonatomic, assign) NSInteger itemWidth;
 @property (nonatomic, assign) NSUInteger numberOfVisibleItems;
-@property (nonatomic, assign) BOOL wrap;
-@property (nonatomic, assign) BOOL doubleSided;
+@property (nonatomic, assign) NSNumber * wrap;
+@property (nonatomic, assign) NSNumber * doubleSided;
 @property (nonatomic, strong) KrollCallback * itemTransformForOffset;
 @property (nonatomic, strong) KrollCallback * itemAlphaForOffset;
 @end

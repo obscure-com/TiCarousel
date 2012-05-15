@@ -27,9 +27,10 @@
 
 - (id)init {
     if (self = [super init]) {
+        self.wrap = false;
         self.itemWidth = 0;
         self.numberOfVisibleItems = 3;
-        self.doubleSided = YES;
+        self.doubleSided = [NSNumber numberWithBool:YES];
     }
     return self;
 }
@@ -65,7 +66,7 @@
 	ENSURE_ARRAY(args);
 	for (id newViewProxy in args) {
 		[self rememberProxy:newViewProxy];
-        [newViewProxy view].layer.doubleSided = self.doubleSided;
+        [newViewProxy view].layer.doubleSided = [self.doubleSided boolValue];
 	}
 	[self lockViewsForWriting];
 	for (id oldViewProxy in viewProxies) {
@@ -163,7 +164,7 @@
 }
 
 - (BOOL)carouselShouldWrap:(iCarousel *)carousel {
-    return self.wrap;
+    return [self.wrap boolValue];
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel itemAlphaForOffset:(CGFloat)offset {
