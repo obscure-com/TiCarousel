@@ -200,6 +200,7 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
                           NUMINT(index), @"selectedIndex",
+                          NUMINT(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselSelectEvent withObject:obj];
 }
