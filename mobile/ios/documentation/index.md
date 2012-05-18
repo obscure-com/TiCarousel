@@ -1,39 +1,270 @@
-# ticarousel Module
+# TiCarousel Module
 
 ## Description
 
-TODO: Enter your module description here
+The TiTouchDB module wraps the [iCarousel](https://github.com/nicklockwood/iCarousel)
+library written by Nick Lockwood and provides a customizable, data-driven 3D carousel
+view for Titanium apps.
 
-## Accessing the ticarousel Module
+TiCarousel is currently only available for iOS.
+
+The reference section follows these conventions:
+
+* Text in `code font` refer to module objects.  For example, database is a generic term
+  but `database` refers to a TiCarousel object.
+* Object functions are listed with parentheses and properties without.  Constants are
+  implemented as read-only properties.
+
+## Accessing the Module
 
 To access this module from JavaScript, you would do the following:
 
-	var ticarousel = require("com.obscure.TiCarousel");
+	var TiCarousel = require("com.obscure.TiCarousel");
 
-The ticarousel variable is a reference to the Module object.	
+The TiCarousel variable is a reference to the Module object.  You can create new carousel
+views by calling `TiCarousel.createCarouselView()` with the appropriate options listed below.
 
-## Reference
+## Examples
 
-TODO: If your module has an API, you should document
-the reference here.
+Create a simple carousel:
 
-### ___PROJECTNAMEASIDENTIFIER__.function
+    var itemViews = [
+      Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'blue' }),
+      Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'yellow' }),
+      Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'red' }),
+      Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }),
+      Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'gray' }),
+    ];
 
-TODO: This is an example of a module function.
+    var carousel = TiCarousel.createCarouselView({
+      carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
+      width: Ti.UI.FILL,
+      height: 200,
+      itemWidth: 68,
+      numberOfVisibleItems: 5,
+      views: itemViews
+    });
 
-### ___PROJECTNAMEASIDENTIFIER__.property
+    win.add(carousel);
 
-TODO: This is an example of a module property.
+## TiCarousel Reference
 
-## Usage
+### Functions
 
-TODO: Enter your usage example here
+**createCarouselView([Dictionary<com.obscure.CarouselView> parameters])** : com.obscure.CarouselView
+
+Creates and returns an instance of a CarouselView.
+
+* `parameters`: [Dictionary<com.obscure.CarouselView> parameters]
+
+  Properties to set on a new object, including any defined by CarouselView except those marked
+  not-creation or read-only.
+
+### Constants
+
+#### Carousel Type
+
+* CAROUSEL\_TYPE\_LINEAR
+* CAROUSEL\_TYPE\_ROTARY
+* CAROUSEL\_TYPE\_INVERTED\_ROTARY
+* CAROUSEL\_TYPE\_CYLINDER
+* CAROUSEL\_TYPE\_INVERTED\_CYLINDER
+* CAROUSEL\_TYPE\_WHEEL
+* CAROUSEL\_TYPE\_INVERTED\_WHEEL
+* CAROUSEL\_TYPE\_COVER\_FLOW
+* CAROUSEL\_TYPE\_COVER\_FLOW2
+* CAROUSEL\_TYPE\_TIME\_MACHINE
+* CAROUSEL\_TYPE\_INVERTED\_TIME\_MACHINE
+* CAROUSEL\_TYPE\_CUSTOM
+
+## CarouselView
+
+### Functions
+
+**indexOfItemView(Ti.UI.View view)** : Number
+
+Returns the index of the provided item view in the carousel.  This method only works
+for item views that are visible; if the specified view is not visible, the method returns
+null.
+
+**indexOfItemViewOrSubview(Ti.UI.View view)** : Number
+
+Returns the index of the provided item view or the item view containing the provided
+view in the carousel.  If the item view is not visible, returns null.
+
+**insertItemAtIndex(Number index, [Boolean animated])**
+
+Inserts a new item into the carousel.  The new item must be in the `views` array prior
+to calling this method.
+
+**itemViewAtIndex(Number index)** : Ti.UI.View
+
+Returns the visible item view with the provided index.  This method returns null if the
+view at the specified index is not visible.
+
+**offsetForItemAtIndex(Number index)** : Number
+
+Returns the positive or negative offset of the specified item index in multiples of
+`itemWidth` from the center position.
+
+**reloadData()**
+
+Reload all carousel items from the view array.  This function must be called
+if the carousel needs to be refreshed due to changes to properties or the underlying
+data.  Properties and methods that require a call to `reloadData()` will indicate
+that in their documentation.
+
+**reloadItemAtIndex(Number index, [Boolean animated])**
+
+Reload the item view at the specified index.  If `animated` is true, the carousel will
+cross-fade from the old item to the new item.
+
+**removeItemAtIndex(Number index)**
+
+Remove the item at the specified index from the carousel.  This does *not* remove the
+item from the underlying view array, so a call to `reloadData()` will restore the view
+to the carousel.
+
+**scrollByNumberOfItems(Number count, Number duration)**
+
+Scroll the carousel by a fixed distance.
+
+* `count`: Number, the number of items to scroll.  Can be positive or negative.
+* `duration`: Number, the duration of the scroll animation in milliseconds.
+
+**scrollToIndex(Number index, [Dictionary options])**
+
+Centers the carousel on the specified item.  For wrapped carousels, the view will
+use the shortest route to scroll if the scroll is animated.  To control the direction
+of the scroll or to scroll more than one full revolution, use **scrollByNumberOfItems()**.
+
+* `index`: Number
+
+   The index of the item to center in the carousel.
+
+* `options`: [Dictionary]
+
+   Dictionary with the following scroll options:
+   
+   * `animated`: Boolean, default true.
+   * `duration`: Number, the duration of the scroll animation in milliseconds.
+
+### Properties
+
+**bounceDistance** : Number, read/write
+
+The maximum distance the carousel will bounce when it overshoots either end, measured
+in multiples of `itemWidth`.  This property only affects carousels which have the `wrap`
+property set to false.
+
+**bounces** : Boolean, read/write
+
+If true, the carousel will bounce past the end and return.  This only affects carousels
+which have the `wrap` property set to false.
+
+**centerItemWhenSelected** : Boolean, read/write
+
+If set to true, a tap on an item that is not currently centered will cause the carousel to
+scroll that item to the center.  Default is true.
+
+**clipsToBounds** : Boolean, read/write
+
+If set to true, the carousel will not display items that fall outside of its own boundaries.
+Default is false.
+
+**contentOffset** : Dictionary, read/write
+
+Adjusts the center of the carousel without changing the perspective.  This has the
+effect of moving the carousel without changing the viewpoint.  The dictionary
+should contain the following values:
+
+* `x` the x offset of the center of the carousel, default 0.0
+* `y` the y offset of the center of the carousel, default 0.0
+
+**currentItemIndex** : Number, read-only
+
+The index of the currently-centered item in the carousel.
+
+**currentItemView** : Ti.UI.View, read-only
+
+The view that is currently centered in the carousel.
+
+**decelerationRate** : Number, read/write
+
+The rate at which the carousel decelerates when flicked.  Value should be between 0.0
+(carousel stops immediately) and 1.0 (carousel continues indefinitely until it reaches
+the end).
+
+**ignorePerpendicularSwipes** : Boolean, read/write
+
+If set to true, the carousel will ignore swipe gestures that are perpendicular to the
+direction of scrolling. This is useful for item views that scroll within the carousel.
+Default is true.
+
+**itemWidth** : Number, read-write
+
+The display width of the items in the carousel.  If a value is not provided, it is determined
+from the width of the first item view in the `views` array.  To add spacing between carousel
+items, set this property to a value greater than your item view width.
+
+**numberOfItems** : Number, read-only
+
+The number of visible items in the carousel.
+
+**perspective** : Number, read/write
+
+Tweaks the perspective foreshortening effect of the 3D carousel views.  Should be a negative
+number between 0 and -0.01; default is -0.005.
+
+**scrollEnabled** : Boolean, read/write
+
+Enable user scrolling of the carousel.  Default is true.
+
+**scrollOffset** : Number, read-only
+
+The current offset in pixels of the carousel; can be used to position other screen elements
+while the carousel is scrolling.
+
+**scrollSpeed** : Number, read/write
+
+A multiplier for the speed of scrolling when the user flicks the carousel.  Default is 1.0.
+
+**scrollToItemBoundary** : Boolean, read/write
+
+When true, the carousel will automatically scroll to the nearest item boundary.  When set to
+false, the carousel will stop wherever scrolling ends, even if it isn't aligned with an item
+view.
+
+**stopAtItemBoundary** : Boolean, read/write
+
+When set to true, the carousel will come to rest at an exact item boundary when scrolled.  If
+set to false, the carousel will stop scrolling naturally and, if `scrollToItemBoundary` is true,
+scroll back or forward to the nearest boundary.
+
+**type** : Number, read/write
+
+The carousel display type.  Must be one of the constants defined in the `TiCarousel`
+object.
+
+**vertical** : Boolean, read/write
+
+Toggles whether the carousel is displayed horizontally (default) or vertically.
+
+**viewpointOffset** : Dictionary, read/write
+
+Adjusts the camera viewpoint relative to the carousel items.  Where `contentOffset` moves
+the carousel in space, `viewpointOffset` moves the user in space.  This has the effect of
+changing the perspective of the carousel. The dictionary should contain the following values:
+
+* `x` the x offset of the center of the viewpoint, default 0.0
+* `y` the y offset of the center of the viewpoint, default 0.0
 
 ## Author
 
-TODO: Enter your author name, email and other contact
-details you want to share here. 
+Paul Mietz Egli (paul@obscure.com)
+
+based on iCarousel by Nick Lockwood
 
 ## License
 
-TODO: Enter your license/legal information here.
+Apache License 2.0.
