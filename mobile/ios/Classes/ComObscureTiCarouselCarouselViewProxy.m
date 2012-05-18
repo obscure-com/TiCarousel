@@ -16,6 +16,11 @@
 #define kCarouselSelectEvent @"select"
 
 
+@interface ComObscureTiCarouselCarouselViewProxy (PrivateMethods)
+@property (nonatomic, readonly) iCarousel * carousel;
+@end
+
+
 @implementation ComObscureTiCarouselCarouselViewProxy
 
 @synthesize itemWidth=_itemWidth;
@@ -41,6 +46,10 @@
 	[viewProxies makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
 	[viewProxies release];
     [super dealloc];
+}
+
+- (iCarousel *)carousel {
+    return ((ComObscureTiCarouselCarouselViewProxy *)[self view]).carousel;
 }
 
 #pragma mark View Management
@@ -92,6 +101,174 @@
 
 // TODO placeholders
 
+#pragma mark iCarousel Properties
+
+- (id)currentItemIndex {
+    return NUMINT(self.carousel.currentItemIndex);
+}
+
+- (id)carouselType {
+    return NUMINT(self.carousel.type);
+}
+
+- (void)setCarouselType:(id)val {
+    ENSURE_UI_THREAD(setCarouselType, val)
+    self.carousel.type = [TiUtils intValue:val];
+}
+
+- (id)perspective {
+    return NUMFLOAT(self.carousel.perspective);
+}
+
+- (void)setPerspective:(id)val {
+    ENSURE_UI_THREAD(setPerspective, val)
+    self.carousel.perspective = [TiUtils floatValue:val];
+}
+
+- (id)contentOffset {
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            NUMFLOAT(self.carousel.contentOffset.width), @"width",
+            NUMFLOAT(self.carousel.contentOffset.height), @"height",
+            nil];
+}
+
+- (void)setContentOffset:(id)val {
+    ENSURE_UI_THREAD(setContentOffset, val)
+    ENSURE_TYPE(val, NSDictionary)
+    self.carousel.contentOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
+}
+
+- (id)viewpointOffset {
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            NUMFLOAT(self.carousel.viewpointOffset.width), @"width",
+            NUMFLOAT(self.carousel.viewpointOffset.height), @"height",
+            nil];
+}
+
+- (void)setViewpointOffset:(id)val {
+    ENSURE_UI_THREAD(setViewpointOffset, val)
+    ENSURE_TYPE(val, NSDictionary)
+    self.carousel.viewpointOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
+}
+
+- (id)decelerationRate {
+    return NUMFLOAT(self.carousel.decelerationRate);
+}
+
+- (void)setDecelerationRate:(id)val {
+    ENSURE_UI_THREAD(setDecelerationRate, val)
+    self.carousel.decelerationRate = [TiUtils floatValue:val];
+}
+
+- (id)bounces {
+    return NUMBOOL(self.carousel.bounces);
+}
+
+- (void)setBounces:(id)val {
+    ENSURE_UI_THREAD(setBounces, val)
+    self.carousel.bounces = [TiUtils boolValue:val];
+}
+
+- (id)bounceDistance {
+    return NUMFLOAT(self.carousel.bounceDistance);
+}
+
+- (void)setBounceDistance:(id)val {
+    ENSURE_UI_THREAD(setBounceDistance, val)
+    self.carousel.bounceDistance = [TiUtils floatValue:val];
+}
+
+- (id)scrollEnabled {
+    return NUMBOOL(self.carousel.scrollEnabled);
+}
+
+- (void)setScrollEnabled:(id)val {
+    ENSURE_UI_THREAD(setScrollEnabled, val)
+    self.carousel.scrollEnabled = [TiUtils boolValue:val];
+}
+
+- (id)numberOfItems {
+    return NUMINT(self.carousel.numberOfItems);
+}
+
+- (id)numberOfPlaceholders {
+    return NUMINT(self.carousel.numberOfPlaceholders);
+}
+
+- (id)scrollOffset {
+    return NUMFLOAT(self.carousel.scrollOffset);
+}
+
+- (id)offsetMultiplier {
+    return NUMFLOAT(self.carousel.offsetMultiplier);
+}
+
+- (id)currentItemView {
+    return self.carousel.currentItemView;
+}
+
+- (id)centerItemWhenSelected {
+    return NUMBOOL(self.carousel.centerItemWhenSelected);
+}
+
+- (void)setCenterItemWhenSelected:(id)val {
+    ENSURE_UI_THREAD(setCenterItemWhenSelected, val)
+    self.carousel.centerItemWhenSelected = [TiUtils boolValue:val];
+}
+
+- (id)scrollSpeed {
+    return NUMFLOAT(self.carousel.scrollSpeed);
+}
+
+- (void)setScrollSpeed:(id)val {
+    self.carousel.scrollSpeed = [TiUtils floatValue:val];
+}
+
+- (id)stopAtItemBoundary {
+    return NUMBOOL(self.carousel.stopAtItemBoundary);
+}
+
+- (void)setStopAtItemBoundary:(id)val {
+    ENSURE_UI_THREAD(setStopAtItemBoundary, val)
+    self.carousel.stopAtItemBoundary = [TiUtils boolValue:val];
+}
+
+- (id)scrollToItemBoundary {
+    return NUMBOOL(self.carousel.scrollToItemBoundary);
+}
+
+- (void)setScrollToItemBoundary:(id)val {
+    ENSURE_UI_THREAD(setScrollToItemBoundary, val)
+    self.carousel.scrollToItemBoundary = [TiUtils boolValue:val];
+}
+
+- (id)vertical {
+    return NUMBOOL(self.carousel.vertical);
+}
+
+- (void)setVertical:(id)val {
+    ENSURE_UI_THREAD(setVertical, val)
+    self.carousel.vertical = [TiUtils boolValue:val];
+}
+
+- (id)ignorePerpendicularSwipes {
+    return NUMBOOL(self.carousel.ignorePerpendicularSwipes);
+}
+
+- (void)setIgnorePerpendicularSwipes:(id)val {
+    ENSURE_UI_THREAD(setIgnorePerpendicularSwipes, val)
+    self.carousel.ignorePerpendicularSwipes = [TiUtils boolValue:val];
+}
+
+- (id)clipsToBounds {
+    return NUMBOOL(self.carousel.clipsToBounds);
+}
+
+- (void)setClipsToBounds:(id)val {
+    ENSURE_UI_THREAD(setClipsToBounds, val)
+    self.carousel.clipsToBounds = [TiUtils boolValue:val];
+}
+
 
 #pragma mark iCarousel Methods
 
@@ -99,44 +276,108 @@
 // - (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 // - (void)scrollToItemAtIndex:(NSInteger)index duration:(NSTimeInterval)scrollDuration;
 - (void)scrollToIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] scrollToIndex:args];
+    ENSURE_UI_THREAD(scrollToIndex, args);
+    
+    NSNumber * index;
+    NSDictionary * options;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber);
+    ENSURE_ARG_OR_NIL_AT_INDEX(options, args, 1, NSDictionary)
+    
+    BOOL animated = [TiUtils boolValue:@"animated" properties:options def:YES];
+    float duration = [TiUtils floatValue:@"duration" properties:options def:-1.0];
+    
+    if (duration < 0.0) {
+        [self.carousel scrollToItemAtIndex:[index integerValue] animated:animated];
+    }
+    else {
+        [self.carousel scrollToItemAtIndex:[index integerValue] duration:duration];
+    }    
 }
 
 // - (void)scrollByNumberOfItems:(NSInteger)itemCount duration:(NSTimeInterval)duration;
 - (void)scrollByNumberOfItems:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] scrollByNumberOfItems:args];
+    ENSURE_UI_THREAD(scrollByNumberOfItems, args)
+    
+    NSNumber * itemCount;
+    NSNumber * duration;
+    ENSURE_ARG_AT_INDEX(itemCount, args, 0, NSNumber);
+    ENSURE_ARG_AT_INDEX(duration, args, 1, NSNumber);
+    
+    [self.carousel scrollToItemAtIndex:[itemCount integerValue] duration:[duration floatValue]];
 }
 
 - (void)reloadData:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] reloadData:args];
+    ENSURE_UI_THREAD(reloadData, args)
+    [self.carousel reloadData];
 }
 
 - (id)itemViewAtIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] itemViewAtIndex:args];
+    ENSURE_UI_THREAD(itemViewAtIndex, args)
+    
+    NSNumber * index;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber);
+    
+    return [self.carousel itemViewAtIndex:[index integerValue]];
 }
 
 - (id)indexOfItemView:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] indexOfItemView:args];
+    ENSURE_UI_THREAD(indexOfItemView, args)
+    
+    TiUIView * v;
+    ENSURE_ARG_AT_INDEX(v, args, 0, TiUIView)
+    
+    return NUMINT([self.carousel indexOfItemView:v]);
 }
 
 - (id)indexOfItemViewOrSubview:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] indexOfItemViewOrSubview:args];
+    ENSURE_UI_THREAD(indexOfItemViewOrSubview, args)
+    
+    TiUIView * v;
+    ENSURE_ARG_AT_INDEX(v, args, 0, TiUIView)
+    
+    return NUMINT([self.carousel indexOfItemViewOrSubview:v]);
 }
 
 - (id)offsetForItemAtIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] offsetForItemAtIndex:args];
+    ENSURE_UI_THREAD(offsetForItemAtIndex, args)
+    
+    NSNumber * index;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber)
+    
+    return NUMFLOAT([self.carousel offsetForItemAtIndex:[index integerValue]]);
 }
 
 - (id)removeItemAtIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] removeItemAtIndex:args];
+    ENSURE_UI_THREAD(removeItemAtIndex, args)
+    
+    NSNumber * index;
+    NSNumber * animated;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber)
+    ENSURE_ARG_OR_NIL_AT_INDEX(animated, args, 1, NSNumber)
+    
+    [self.carousel removeItemAtIndex:[index integerValue] animated:[animated boolValue]];
 }
 
 - (id)insertItemAtIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] insertItemAtIndex:args];
+    ENSURE_UI_THREAD(insertItemAtIndex, args)
+    
+    NSNumber * index;
+    NSNumber * animated;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber)
+    ENSURE_ARG_OR_NIL_AT_INDEX(animated, args, 1, NSNumber)
+    
+    [self.carousel insertItemAtIndex:[index integerValue] animated:[animated boolValue]];
 }
 
 - (id)reloadItemAtIndex:(id)args {
-    [(ComObscureTiCarouselCarouselView *)[self view] reloadItemAtIndex:args];
+    ENSURE_UI_THREAD(reloadItemAtIndex, args)
+    
+    NSNumber * index;
+    NSNumber * animated;
+    ENSURE_ARG_AT_INDEX(index, args, 0, NSNumber)
+    ENSURE_ARG_OR_NIL_AT_INDEX(animated, args, 1, NSNumber)
+    
+    [self.carousel reloadItemAtIndex:[index integerValue] animated:[animated boolValue]];
 }
 
 #pragma mark -
