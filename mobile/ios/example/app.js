@@ -9,6 +9,7 @@ win.add(nav);
 var data = [
   { title: 'Transform Types', module: require('./types') },
   { title: 'Scrolling', module: require('./scroll') },
+  { title: 'Viewpoint', module: require('./viewcenter') },
   { title: 'Custom Transform', module: require('./custom') },
 ];
 
