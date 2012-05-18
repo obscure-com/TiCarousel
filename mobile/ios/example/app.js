@@ -8,6 +8,7 @@ win.add(nav);
 
 var data = [
   { title: 'Transform Types', module: require('./types') },
+  { title: 'Scrolling', module: require('./scroll') },
   { title: 'Custom Transform', module: require('./custom') },
 ];
 

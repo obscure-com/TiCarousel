@@ -1,13 +1,13 @@
 
 var TiCarousel = require('com.obscure.TiCarousel'),
+    utils = require('./utils'),
     views = [];
 
 for (i=0; i < 20; i++) {
   // NOTE the views provided to the carousel cannot currently use
   // Ti.UI.SIZE or Ti.UI.FILL (or 'auto', for that matter).
-  var r = ((i + 1) * 12), g = (255 - r), b = 128;
-  var bg = String.format('#%s%s%s', r.toString(16), g.toString(16), b.toString(16));
-  Ti.API.info(bg);
+  r = ((i + 1) * 12);
+  var bg = utils.toHexString(r, (255 - r), 128);
   var view = Ti.UI.createView({
     height: 200,
     width: 200,
@@ -98,12 +98,23 @@ function createToolbar(parentView, typeLabel, carousel) {
     wrapButton.title = carousel.wrap ? 'Wrap: ON' : 'Wrap: OFF';
   });
   
+  var verticalButton = Ti.UI.createButton({
+    title: carousel.vertical ? 'Vertical' : 'Horizontal',
+    style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+  });
+  verticalButton.addEventListener('click', function(e) {
+    carousel.vertical = !carousel.vertical;
+    setTimeout(function() {
+      verticalButton.title = carousel.vertical ? 'Vertical' : 'Horizontal';
+    }, 200);
+  });
+  
   var flexSpace = Ti.UI.createButton({
     systemButton: Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
   });
   
   var self = Ti.UI.iOS.createToolbar({
-    items: [typeButton, flexSpace, wrapButton],
+    items: [typeButton, flexSpace, verticalButton, wrapButton],
     bottom: 0,
     borderTop: true,
     borderBottom: false,
