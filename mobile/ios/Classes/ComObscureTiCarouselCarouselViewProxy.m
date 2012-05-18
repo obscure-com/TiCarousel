@@ -127,28 +127,28 @@
 
 - (id)contentOffset {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            NUMFLOAT(self.carousel.contentOffset.width), @"width",
-            NUMFLOAT(self.carousel.contentOffset.height), @"height",
+            NUMFLOAT(self.carousel.contentOffset.width), @"x",
+            NUMFLOAT(self.carousel.contentOffset.height), @"y",
             nil];
 }
 
 - (void)setContentOffset:(id)val {
     ENSURE_UI_THREAD(setContentOffset, val)
     ENSURE_TYPE(val, NSDictionary)
-    self.carousel.contentOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
+    self.carousel.contentOffset = CGSizeMake([TiUtils floatValue:@"x" properties:val def:0.0f], [TiUtils floatValue:@"y" properties:val def:0.0f]);
 }
 
 - (id)viewpointOffset {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            NUMFLOAT(self.carousel.viewpointOffset.width), @"width",
-            NUMFLOAT(self.carousel.viewpointOffset.height), @"height",
+            NUMFLOAT(self.carousel.viewpointOffset.width), @"x",
+            NUMFLOAT(self.carousel.viewpointOffset.height), @"y",
             nil];
 }
 
 - (void)setViewpointOffset:(id)val {
     ENSURE_UI_THREAD(setViewpointOffset, val)
     ENSURE_TYPE(val, NSDictionary)
-    self.carousel.viewpointOffset = CGSizeMake([TiUtils floatValue:@"width" properties:val def:0.0f], [TiUtils floatValue:@"height" properties:val def:0.0f]);
+    self.carousel.viewpointOffset = CGSizeMake([TiUtils floatValue:@"x" properties:val def:0.0f], [TiUtils floatValue:@"y" properties:val def:0.0f]);
 }
 
 - (id)decelerationRate {
@@ -326,7 +326,8 @@
     TiUIView * v;
     ENSURE_ARG_AT_INDEX(v, args, 0, TiUIView)
     
-    return NUMINT([self.carousel indexOfItemView:v]);
+    NSInteger result = [self.carousel indexOfItemView:v];
+    return result != NSNotFound ? NUMINT(result) : nil;
 }
 
 - (id)indexOfItemViewOrSubview:(id)args {
