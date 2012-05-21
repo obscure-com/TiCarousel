@@ -259,6 +259,81 @@ changing the perspective of the carousel. The dictionary should contain the foll
 * `x` the x offset of the center of the viewpoint, default 0.0
 * `y` the y offset of the center of the viewpoint, default 0.0
 
+## Custom Transforms
+
+In addition to the standard set of carousel types, TiCarousel lets you create your own custom
+carousel types.  A custom carousel type is created by specifying of a set of 3D transforms to 
+apply to the item views based on their position in the carousel.  In addition, can control the
+transparency of the item view to "fade out" based on the view's position.
+
+The custom transform functions are implemented in your Titanium JavaScript file.  To use a custom
+carousel type, create a new carousel object with a `carouselType` property set to
+`CAROUSEL_TYPE_CUSTOM`:
+
+    var carousel = TiCarousel.createCarouselView({
+      carouselType: TiCarousel.CAROUSEL_TYPE_CUSTOM,
+      width: Ti.UI.FILL,
+      height: 200,
+      itemWidth: 68,
+      numberOfVisibleItems: 5,
+    });
+
+Next, create a function that returns one or more transformation descriptors.  A transformation
+descriptor is a JavaScript object with a `type` property containing the name of the transform and
+a `values` property containing an array of numbers whose meaning depends on the transform type.
+The following descriptor types are currently supported:
+
+* **translate** move the view without changing its orientation.  The values array must contain:
+  1. delta-x : positive or negative change in the x coordinate
+  2. delta-y : positive or negative change in the y coordinate
+  3. delta-z : positive (away from view) or negative (towards view) change in the z coordinate
+* **rotate** rotation of the view around the specified point.  The values array must contain:
+  1. angle : the angle of rotation in radians
+  2. center-x : the center of rotation x coordinate
+  2. center-y : the center of rotation y coordinate
+  2. center-z : the center of rotation z coordinate
+* **scale** change the size of the view.  The values array must contain:
+  1. scale-x : the scale multiplier for the x size
+  2. scale-y : the scale multiplier for the y size
+  3. scale-z : the scale multiplier for the z size
+
+For example, the Linear carousel type would be implemented as follows:
+
+    var itemWidth = carousel.itemWidth;
+    
+    function transform(offset) {
+      return [
+        { type: 'translate', values: [ offset * itemWidth, 0, 0 ] }
+      ];
+    }
+    
+    carousel.itemTransformForOffset = transform;
+
+The transform function receives a parameter named `offset` which is the current positive or negative
+offset of the view from the center of the carousel.
+
+*Transform functions run in an isolated JavaScript context!* This means that you cannot reference
+the Titanium API or any objects that were created in your application's context.  Primitive values
+are fine, however, which is why we are setting a primitive named `itemWidth` in the example
+above.
+
+If you want to change the alpha transparency of the item view based on the offset, create a function
+that returns a value between 0.0 and 1.0 for each item based on offset.  Here's an alpha function that
+fades views which are more than one unit away from center to 60% opacity:
+
+    function alpha(offset) {
+      var absoffset = Math.abs(offset);
+      return absoffset < 1.0 ? (1.0 - 0.4 * absoffset) : 0.6;
+    }
+    
+    carousel.itemAlphaForOffset = alpha;
+
+**Important Note**
+
+Custom transform callbacks are expensive and are not recommended for very large carousels.  If
+you have a transform type that you would like to have implemented in native code, please file an
+issue describing the transform or, better yet, fork the code and send a pull request.
+
 ## Author
 
 Paul Mietz Egli (paul@obscure.com)
