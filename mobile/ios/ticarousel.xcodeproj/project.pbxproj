@@ -56,6 +56,7 @@
 		AA747D9E0F9514B9006C5449 /* ComObscureTiCarousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComObscureTiCarousel_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComObscureTiCarousel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComObscureTiCarousel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6EC6E9157D25ED009067B7 /* iCarouselEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iCarouselEx.h; path = Classes/iCarouselEx.h; sourceTree = "<group>"; };
 		DAA4DCA31562AFA000192EA3 /* TransformParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransformParser.h; path = Classes/TransformParser.h; sourceTree = "<group>"; };
 		DAA4DCA41562AFA000192EA3 /* TransformParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransformParser.m; path = Classes/TransformParser.m; sourceTree = "<group>"; };
 		DAEF8D60155C1ADA0053A8FA /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = vendor/iCarousel/iCarousel/iCarousel.h; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA6EC6E9157D25ED009067B7 /* iCarouselEx.h */,
 				24DD6CF71134B3F500162E58 /* ComObscureTiCarouselModule.h */,
 				24DD6CF81134B3F500162E58 /* ComObscureTiCarouselModule.m */,
 				DAEF8D6A155C1E770053A8FA /* ComObscureTiCarouselCarouselViewProxy.h */,

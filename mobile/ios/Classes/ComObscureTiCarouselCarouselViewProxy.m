@@ -29,6 +29,7 @@
 @synthesize doubleSided=_doubleSided;
 @synthesize itemTransformForOffset=_itemTransformForOffset;
 @synthesize itemAlphaForOffset=_itemAlphaForOffset;
+@synthesize transformOptions=_transformOptions;
 
 - (id)init {
     if (self = [super init]) {
@@ -36,6 +37,17 @@
         self.itemWidth = 0;
         self.numberOfVisibleItems = 3;
         self.doubleSided = [NSNumber numberWithBool:YES];
+        
+        transformOptionNames = [[NSDictionary dictionaryWithObjectsAndKeys:
+                                @"angle", [NSNumber numberWithInt:iCarouselTranformOptionAngle],
+                                @"arc", [NSNumber numberWithInt:iCarouselTranformOptionArc],
+                                @"count", [NSNumber numberWithInt:iCarouselTranformOptionCount],
+                                @"radius", [NSNumber numberWithInt:iCarouselTranformOptionRadius],
+                                @"spacing", [NSNumber numberWithInt:iCarouselTranformOptionSpacing],
+                                @"tilt", [NSNumber numberWithInt:iCarouselTranformOptionTilt],
+                                @"yoffset", [NSNumber numberWithInt:iCarouselTransformOptionExYOffset],
+                                @"zoffset", [NSNumber numberWithInt:iCarouselTransformOptionExZOffset],
+                                nil] retain];
     }
     return self;
 }
@@ -45,6 +57,7 @@
 	pthread_rwlock_destroy(&viewsLock);
 	[viewProxies makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
 	[viewProxies release];
+    [transformOptionNames release];
     [super dealloc];
 }
 
@@ -89,7 +102,7 @@
 	[self replaceValue:args forKey:@"views" notification:YES];
 }
 
--(void)childWillResize:(TiViewProxy *)child {
+- (void)childWillResize:(TiViewProxy *)child {
 	BOOL hasChild = [[self children] containsObject:child];
     
 	if (!hasChild) {
@@ -113,7 +126,15 @@
 
 - (void)setCarouselType:(id)val {
     ENSURE_UI_THREAD(setCarouselType, val)
-    self.carousel.type = [TiUtils intValue:val];
+    int type = [TiUtils intValue:val];
+    if (type > iCarouselTypeCustom) {
+        extendedType = type;
+        self.carousel.type = iCarouselTypeCustom;
+    }
+    else {
+        extendedType = -1;
+        self.carousel.type = type;
+    }
 }
 
 - (id)perspective {
@@ -409,19 +430,54 @@
     return [self.wrap boolValue];
 }
 
+- (CGFloat)carousel:(iCarousel *)carousel valueForTransformOption:(iCarouselTranformOption)option withDefault:(CGFloat)value {
+    NSString * name = [transformOptionNames objectForKey:[NSNumber numberWithInt:option]];
+    id result = [self.transformOptions objectForKey:name];
+    return result ? [result floatValue] : value;
+}
+
 - (CGFloat)carousel:(iCarousel *)carousel itemAlphaForOffset:(CGFloat)offset {
     CGFloat result = 1.0f;
-    if (self.itemAlphaForOffset) {
-        NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
-        result = [[self.itemAlphaForOffset call:args thisObject:nil] floatValue];
+    
+    switch (extendedType) {
+        case iCarouselTypeExBump:
+        {
+            CGFloat o = ABS(offset);
+            result = o < 1.0 ? (1.0 - 0.4 * o) : 0.6;
+        }
+        default:
+            if (self.itemAlphaForOffset) {
+                NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
+                result = [[self.itemAlphaForOffset call:args thisObject:nil] floatValue];
+            }
     }
+    
     return result;
 }
 
 - (CATransform3D)carousel:(iCarousel *)_carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform {
-    NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
-    NSArray * result = [self.itemTransformForOffset call:args thisObject:nil];
-    transform = [TransformParser addTransforms:result toTransform:transform];
+    switch (extendedType) {
+        case iCarouselTypeExBump:
+        {
+            CGFloat dx = _carousel.itemWidth * offset;
+            CGFloat dy = [self carousel:_carousel valueForTransformOption:iCarouselTransformOptionExYOffset withDefault:(_carousel.itemWidth * -0.95f)];
+            CGFloat dz = [self carousel:_carousel valueForTransformOption:iCarouselTransformOptionExZOffset withDefault:(_carousel.itemWidth * -3.0f)];
+
+            CGFloat o = ABS(offset);
+            if (o < 1.0) {
+                dy *= o;
+                dz *= o;
+            }
+            transform = CATransform3DTranslate(transform, dx, dy, dz);
+        }
+        default:
+        {
+            NSArray * args = [NSArray arrayWithObject:NUMFLOAT(offset)];
+            NSArray * result = [self.itemTransformForOffset call:args thisObject:nil];
+            transform = [TransformParser addTransforms:result toTransform:transform];
+        }
+    }
+    
     return transform;
 }
 

@@ -9,6 +9,7 @@
 #import "TiHost.h"
 #import "TiUtils.h"
 #import "iCarousel.h"
+#import "iCarouselEx.h"
 
 @implementation ComObscureTiCarouselModule
 
@@ -48,6 +49,7 @@
 
 #pragma mark Constants
 
+// standard types
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_LINEAR, iCarouselTypeLinear)
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_ROTARY, iCarouselTypeRotary)
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_ROTARY, iCarouselTypeInvertedRotary)
@@ -60,5 +62,21 @@ MAKE_SYSTEM_PROP(CAROUSEL_TYPE_COVER_FLOW2, iCarouselTypeCoverFlow2)
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_TIME_MACHINE, iCarouselTypeTimeMachine)
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_INVERTED_TIME_MACHINE, iCarouselTypeInvertedTimeMachine)
 MAKE_SYSTEM_PROP(CAROUSEL_TYPE_CUSTOM, iCarouselTypeCustom)
+
+// standard transform options
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_COUNT, @"count")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_ARC, @"arc")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_ANGLE, @"angle")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_RADIUS, @"radius")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_TILT, @"tilt")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_SPACING, @"spacing")
+
+
+// extended types
+MAKE_SYSTEM_PROP(CAROUSEL_TYPE_BUMP, iCarouselTypeExBump)
+
+// extended transform options
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_YOFFSET, @"yoffset")
+MAKE_SYSTEM_STR(CAROUSEL_TRANSFORM_OPTION_ZOFFSET, @"zoffset")
 
 @end

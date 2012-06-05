@@ -7,7 +7,9 @@
 #import "TiModule.h"
 #import "iCarousel.h"
 
-@interface ComObscureTiCarouselModule : TiModule 
+@interface ComObscureTiCarouselModule : TiModule
+
+// standard carousel types
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_LINEAR;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_ROTARY;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_INVERTED_ROTARY;
@@ -20,4 +22,8 @@
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_TIME_MACHINE;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_INVERTED_TIME_MACHINE;
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_CUSTOM;
+
+// extended carousel types
+@property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_BUMP;
+
 @end

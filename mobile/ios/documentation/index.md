@@ -241,6 +241,11 @@ When set to true, the carousel will come to rest at an exact item boundary when 
 set to false, the carousel will stop scrolling naturally and, if `scrollToItemBoundary` is true,
 scroll back or forward to the nearest boundary.
 
+**transformOptions** : Dictionary, read/write
+
+Get or set transform options for the built-in carousel types.  See the "Transform Options"
+section below for a list of which options can be set for each carousel type.
+
 **type** : Number, read/write
 
 The carousel display type.  Must be one of the constants defined in the `TiCarousel`
@@ -259,7 +264,29 @@ changing the perspective of the carousel. The dictionary should contain the foll
 * `x` the x offset of the center of the viewpoint, default 0.0
 * `y` the y offset of the center of the viewpoint, default 0.0
 
+## Transform Options
+
+Several of the built-in transforms can be customized using the transform options dictionary.
+Rotary and cylinder carousels can be adjusted using the `arc` and `radius` properties.
+For these carousel types, `arc` controls the curvature of the receding views on either side
+of the center and `radius` the width of the carousel.  Wheel carousels are also customized
+with `arc` and `radius`, though the effect is as if you are looking at a cylinder carousel
+from above.  CoverFlow and TimeMachine-like carousels can be customized using the `tilt`
+and `spacing` properties.  Finally, the bump carousel can be customized with the `yoffset`
+and `zoffset` properties.  The example app contains a screen where you can try out different
+values for these properties.
+
 ## Custom Transforms
+
+*IMPORTANT NOTE*
+
+Custom transforms should be considered experimental and are not recommended for production
+use.  Use the transform options to customize an existing carousel type if possible before
+trying the custom transform feature.  If you really, really need a new, unique carousel type,
+consider using the custom transform feature to prototype it, then request that your
+transform be added to TiCarousel by filing an issue on Github.
+
+* * *
 
 In addition to the standard set of carousel types, TiCarousel lets you create your own custom
 carousel types.  A custom carousel type is created by specifying of a set of 3D transforms to 
