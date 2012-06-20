@@ -4,14 +4,14 @@
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
  */
-#import "ComObscureTiCarouselModule.h"
+#import "ComObscureTicarouselModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
 #import "iCarousel.h"
 #import "iCarouselEx.h"
 
-@implementation ComObscureTiCarouselModule
+@implementation ComObscureTicarouselModule
 
 #pragma mark Internal
 
@@ -20,7 +20,7 @@
 }
 
 -(NSString*)moduleId {
-	return @"com.obscure.TiCarousel";
+	return @"com.obscure.ticarousel";
 }
 
 #pragma mark Lifecycle

@@ -1,3 +1,3 @@
-var TiCarousel = require('com.obscure.TiCarousel'),
+var TiCarousel = require('com.obscure.ticarousel'),
     views = [];
 

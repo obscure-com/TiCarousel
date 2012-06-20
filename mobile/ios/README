@@ -12,7 +12,7 @@ Installation
 directory (usually `~/Library/Application Support/Titanium`). 
 1. Edit your project's `tiapp.xml` and add the module.  Example:
     <modules>
-        <module platform="iphone" version="1.0">com.obscure.TiCarousel</module>
+        <module platform="iphone" version="1.0">com.obscure.ticarousel</module>
     </modules>
 
 

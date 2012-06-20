@@ -11,7 +11,7 @@
 #import "iCarousel.h"
 #import "iCarouselEx.h"
 
-@interface ComObscureTiCarouselCarouselViewProxy : TiViewProxy <iCarouselDataSource,iCarouselDelegate> {
+@interface ComObscureTicarouselCarouselViewProxy : TiViewProxy <iCarouselDataSource,iCarouselDelegate> {
 	pthread_rwlock_t viewsLock;
     NSArray * viewProxies;
     

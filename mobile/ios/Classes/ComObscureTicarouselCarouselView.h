@@ -9,6 +9,6 @@
 #import "TiUIView.h"
 #import "iCarousel.h"
 
-@interface ComObscureTiCarouselCarouselView : TiUIView <iCarouselDelegate>
+@interface ComObscureTicarouselCarouselView : TiUIView <iCarouselDelegate>
 @property (nonatomic, strong) iCarousel * carousel;
 @end

@@ -8,7 +8,7 @@
 
 #import "ComObscureTiCarouselCarouselView.h"
 
-@implementation ComObscureTiCarouselCarouselView
+@implementation ComObscureTicarouselCarouselView
 
 @synthesize carousel=_carousel;
 

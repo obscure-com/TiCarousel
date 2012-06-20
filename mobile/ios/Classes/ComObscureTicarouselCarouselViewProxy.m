@@ -16,12 +16,12 @@
 #define kCarouselSelectEvent @"select"
 
 
-@interface ComObscureTiCarouselCarouselViewProxy (PrivateMethods)
+@interface ComObscureTicarouselCarouselViewProxy (PrivateMethods)
 @property (nonatomic, readonly) iCarousel * carousel;
 @end
 
 
-@implementation ComObscureTiCarouselCarouselViewProxy
+@implementation ComObscureTicarouselCarouselViewProxy
 
 @synthesize itemWidth=_itemWidth;
 @synthesize numberOfVisibleItems=_numberOfVisibleItems;
@@ -62,7 +62,7 @@
 }
 
 - (iCarousel *)carousel {
-    return ((ComObscureTiCarouselCarouselViewProxy *)[self view]).carousel;
+    return ((ComObscureTicarouselCarouselViewProxy *)[self view]).carousel;
 }
 
 #pragma mark View Management

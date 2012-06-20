@@ -19,7 +19,7 @@ The reference section follows these conventions:
 
 To access this module from JavaScript, you would do the following:
 
-	var TiCarousel = require("com.obscure.TiCarousel");
+	var TiCarousel = require("com.obscure.ticarousel");
 
 The TiCarousel variable is a reference to the Module object.  You can create new carousel
 views by calling `TiCarousel.createCarouselView()` with the appropriate options listed below.

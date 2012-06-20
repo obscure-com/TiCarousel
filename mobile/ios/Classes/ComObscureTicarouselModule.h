@@ -7,7 +7,7 @@
 #import "TiModule.h"
 #import "iCarousel.h"
 
-@interface ComObscureTiCarouselModule : TiModule
+@interface ComObscureTicarouselModule : TiModule
 
 // standard carousel types
 @property (nonatomic, readonly) NSNumber * CAROUSEL_TYPE_LINEAR;

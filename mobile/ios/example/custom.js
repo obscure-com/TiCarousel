@@ -7,7 +7,7 @@ exports.createWindow = function() {
   	layout: 'vertical',
   });
 
-  var TiCarousel = require('com.obscure.TiCarousel');
+  var TiCarousel = require('com.obscure.ticarousel');
 
   var label = Ti.UI.createLabel({ text: 'status' });
   win.add(label);

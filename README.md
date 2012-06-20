@@ -23,7 +23,12 @@ See the Wiki pages for usage instructions and the samples directory for example 
 
 ## Development Status
 
-**initial release**
+**1.0.1**
+
+* new "bump" carousel type
+* changed module name to lowercase for better compatibility with Titanium Studio
+
+**1.0**
 
 * built-in carousel types are working
 * can now set views after the carousel is created

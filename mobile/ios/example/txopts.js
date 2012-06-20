@@ -1,4 +1,4 @@
-var TiCarousel = require('com.obscure.TiCarousel'),
+var TiCarousel = require('com.obscure.ticarousel'),
     utils = require('./utils'),
     txopts = {
       arc: Math.PI / 2.0,
