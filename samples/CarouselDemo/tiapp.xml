@@ -46,6 +46,6 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="iphone" version="1.0">com.obscure.TiCarousel</module>
+        <module platform="iphone" version="1.0.1">com.obscure.ticarousel</module>
     </modules>
 </ti:app>

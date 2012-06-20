@@ -1,5 +1,5 @@
 
-var TiCarousel = require('com.obscure.TiCarousel'),
+var TiCarousel = require('com.obscure.ticarousel'),
     views = [];
 
 for (i=0; i < 20; i++) {
