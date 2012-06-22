@@ -41,6 +41,7 @@ function createTypePickerView(carousel) {
     Ti.UI.createPickerRow({ title: L('type_COVER_FLOW2'), type: TiCarousel.CAROUSEL_TYPE_COVER_FLOW2 }),
     Ti.UI.createPickerRow({ title: L('type_TIME_MACHINE'), type: TiCarousel.CAROUSEL_TYPE_TIME_MACHINE }),
     Ti.UI.createPickerRow({ title: L('type_INVERTED_TIME_MACHINE'), type: TiCarousel.CAROUSEL_TYPE_INVERTED_TIME_MACHINE }),
+    Ti.UI.createPickerRow({ title: L('type_BUMP'), type: TiCarousel.CAROUSEL_TYPE_BUMP }),
   ];
   
   var picker = Ti.UI.createPicker({
