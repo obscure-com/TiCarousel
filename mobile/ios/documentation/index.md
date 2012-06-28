@@ -130,7 +130,7 @@ to the carousel.
 Scroll the carousel by a fixed distance.
 
 * `count`: Number, the number of items to scroll.  Can be positive or negative.
-* `duration`: Number, the duration of the scroll animation in milliseconds.
+* `duration`: Number, the duration of the scroll animation in seconds.
 
 **scrollToIndex(Number index, [Dictionary options])**
 
@@ -147,7 +147,7 @@ of the scroll or to scroll more than one full revolution, use **scrollByNumberOf
    Dictionary with the following scroll options:
    
    * `animated`: Boolean, default true.
-   * `duration`: Number, the duration of the scroll animation in milliseconds.
+   * `duration`: Number, the duration of the scroll animation in seconds.
 
 ### Properties
 

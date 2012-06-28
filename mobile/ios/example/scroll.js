@@ -90,6 +90,16 @@ function createStopAtBoundView(carousel) {
   return result;
 }
 
+function createScrollToStartView(carousel) {
+  var result = Ti.UI.createButton({
+    title: 'Scroll to Start',
+  });
+  result.addEventListener('click', function(e) {
+    carousel.scrollToIndex(0, { animated: false, duration: 0.1 });
+  });
+  return result;
+}
+
 exports.createWindow = function() {
   var win = Ti.UI.createWindow({
     title: 'Scrolling',
@@ -124,6 +134,7 @@ exports.createWindow = function() {
   win.add(createScrollSpeedView(carousel));
   win.add(createScrollToBoundView(carousel));
   win.add(createStopAtBoundView(carousel));
+  win.add(createScrollToStartView(carousel));
 
   return win;
 };
