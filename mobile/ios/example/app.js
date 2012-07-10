@@ -13,6 +13,7 @@ var data = [
   { title: 'Viewpoint', module: require('./viewcenter') },
   { title: 'Reload Test', module: require('./reload') },
   { title: 'Custom Transform', module: require('./custom') },
+  { title: 'Lots of Views', module: require('./lotsaviews') },
 ];
 
 var table = Ti.UI.createTableView({
