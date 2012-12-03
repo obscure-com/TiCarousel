@@ -264,6 +264,17 @@ changing the perspective of the carousel. The dictionary should contain the foll
 * `x` the x offset of the center of the viewpoint, default 0.0
 * `y` the y offset of the center of the viewpoint, default 0.0
 
+### Events
+
+**scroll** : fired when the carousel ends an animated scroll.
+
+**change** : fired whenever the carousel scrolls far enough for the currentItemIndex property
+to change. It is called regardless of whether the item index was updated programatically or
+through user interaction. 
+
+**select** : fired if the user taps any carousel item view, including the currently selected view.
+This event will not fire if the user taps a control within the currently selected view.
+
 ## Transform Options
 
 Several of the built-in transforms can be customized using the transform options dictionary.
