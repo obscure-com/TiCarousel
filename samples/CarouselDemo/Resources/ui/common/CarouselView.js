@@ -2,6 +2,7 @@
 var TiCarousel = require('com.obscure.ticarousel'),
     views = [];
 
+/*
 for (i=0; i < 20; i++) {
   // NOTE the views provided to the carousel cannot currently use
   // Ti.UI.SIZE or Ti.UI.FILL (or 'auto', for that matter).
@@ -20,6 +21,53 @@ for (i=0; i < 20; i++) {
   }));
   views.push(view);
 }
+*/
+
+function createImageView(img, name) {
+  var result = Ti.UI.createView({
+    height: 240,
+    width: 240,
+    backgroundColor: '#333',
+  });
+
+  result.add(Ti.UI.createImageView({
+    height: Ti.UI.FILL,
+    width: Ti.UI.FILL,
+    image: img,
+  }));
+
+  result.add(Ti.UI.createLabel({
+    bottom: 0,
+    left: 0,
+    width: 240,
+    height: 26,
+    text: name,
+    textAlign: 'center',
+    color: 'white',
+    backgroundColor: '#ccc',
+    opacity: 0.8,
+    zIndex: 10,
+  }));
+  
+  // TODO click event to show large version
+  
+  return result;
+}
+
+var views = [
+  createImageView('images/01_bruges.jpg', 'Bruges'),
+  createImageView('images/02_hawaiian_chieftan.jpg', 'The Hawai\'ian Chieftan'),
+  createImageView('images/03_socrates.jpg', 'Socrates'),
+  createImageView('images/04_pigeon_point.jpg', 'Pigeon Point Lighthouse'),
+  createImageView('images/05_cattle.jpg', 'Dad\'s cattle'),
+  createImageView('images/06_belgium_canal.jpg', 'Canal in Belgium'),
+  createImageView('images/07_west_cliff.jpg', 'West Cliff Dr.'),
+  createImageView('images/08_bike.jpg', 'Swanton Loop peak'),
+  createImageView('images/09_pacific_ave.jpg', 'Pacific Ave.'),
+  createImageView('images/10_crabe_extra.jpg', 'Crabe Extra'),
+  createImageView('images/11_ghent.jpg', 'Ghent'),
+];
+
 
 function createTypePickerView(carousel) {
   var self = Ti.UI.createView({
@@ -123,7 +171,7 @@ function CarouselView() {
 	  top: 24,
     carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
     views: views,
-    itemWidth: 210,
+    itemWidth: 250,
     numberOfVisibleItems: 12,
     wrap: false,
 	});
