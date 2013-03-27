@@ -11,7 +11,7 @@ typedef enum {
 } iCarouselTypeEx;
 
 typedef enum {
-    iCarouselTransformOptionExYOffset = iCarouselTranformOptionSpacing + 1,
-    iCarouselTransformOptionExZOffset
+    iCarouselOptionExYOffset = iCarouselOptionFadeRange + 1,
+    iCarouselOptionExZOffset
 } iCarouselTransformOptionEx;
 

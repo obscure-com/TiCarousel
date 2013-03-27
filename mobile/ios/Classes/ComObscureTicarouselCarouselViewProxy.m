@@ -39,14 +39,14 @@
         self.doubleSided = [NSNumber numberWithBool:YES];
         
         transformOptionNames = [[NSDictionary dictionaryWithObjectsAndKeys:
-                                @"angle", [NSNumber numberWithInt:iCarouselTranformOptionAngle],
-                                @"arc", [NSNumber numberWithInt:iCarouselTranformOptionArc],
-                                @"count", [NSNumber numberWithInt:iCarouselTranformOptionCount],
-                                @"radius", [NSNumber numberWithInt:iCarouselTranformOptionRadius],
-                                @"spacing", [NSNumber numberWithInt:iCarouselTranformOptionSpacing],
-                                @"tilt", [NSNumber numberWithInt:iCarouselTranformOptionTilt],
-                                @"yoffset", [NSNumber numberWithInt:iCarouselTransformOptionExYOffset],
-                                @"zoffset", [NSNumber numberWithInt:iCarouselTransformOptionExZOffset],
+                                @"angle", [NSNumber numberWithInt:iCarouselOptionAngle],
+                                @"arc", [NSNumber numberWithInt:iCarouselOptionArc],
+                                @"count", [NSNumber numberWithInt:iCarouselOptionCount],
+                                @"radius", [NSNumber numberWithInt:iCarouselOptionRadius],
+                                @"spacing", [NSNumber numberWithInt:iCarouselOptionSpacing],
+                                @"tilt", [NSNumber numberWithInt:iCarouselOptionTilt],
+                                @"yoffset", [NSNumber numberWithInt:iCarouselOptionExYOffset],
+                                @"zoffset", [NSNumber numberWithInt:iCarouselOptionExZOffset],
                                 nil] retain];
     }
     return self;
@@ -430,7 +430,7 @@
     return [self.wrap boolValue];
 }
 
-- (CGFloat)carousel:(iCarousel *)carousel valueForTransformOption:(iCarouselTranformOption)option withDefault:(CGFloat)value {
+- (CGFloat)carousel:(iCarousel *)carousel valueForTransformOption:(iCarouselOption)option withDefault:(CGFloat)value {
     NSString * name = [transformOptionNames objectForKey:[NSNumber numberWithInt:option]];
     id result = [self.transformOptions objectForKey:name];
     return result ? [result floatValue] : value;
@@ -460,8 +460,8 @@
         case iCarouselTypeExBump:
         {
             CGFloat dx = _carousel.itemWidth * offset;
-            CGFloat dy = [self carousel:_carousel valueForTransformOption:iCarouselTransformOptionExYOffset withDefault:(_carousel.itemWidth * -0.95f)];
-            CGFloat dz = [self carousel:_carousel valueForTransformOption:iCarouselTransformOptionExZOffset withDefault:(_carousel.itemWidth * -3.0f)];
+            CGFloat dy = [self carousel:_carousel valueForTransformOption:iCarouselOptionExYOffset withDefault:(_carousel.itemWidth * -0.95f)];
+            CGFloat dz = [self carousel:_carousel valueForTransformOption:iCarouselOptionExZOffset withDefault:(_carousel.itemWidth * -3.0f)];
 
             CGFloat o = ABS(offset);
             if (o < 1.0) {
@@ -488,7 +488,7 @@
     [self fireEvent:kCarouselScrollEvent withObject:obj];
 }
 
-- (void)carouselCurrentItemIndexUpdated:(iCarousel *)carousel {
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
                           NUMINT(carousel.currentItemIndex), @"currentIndex",
                           nil];
