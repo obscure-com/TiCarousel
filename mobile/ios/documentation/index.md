@@ -264,6 +264,11 @@ changing the perspective of the carousel. The dictionary should contain the foll
 * `x` the x offset of the center of the viewpoint, default 0.0
 * `y` the y offset of the center of the viewpoint, default 0.0
 
+**wrap** : Boolean, read/write
+
+When `true`, the carousel "wraps around", displaying the first item again after the last
+item.
+
 ### Events
 
 **scroll** : fired when the carousel ends an animated scroll.
