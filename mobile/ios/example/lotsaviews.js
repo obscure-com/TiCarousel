@@ -3,25 +3,30 @@ var TiCarousel = require('com.obscure.ticarousel'),
     utils = require('./utils'),
     views = [];
 
-for (i=0; i < 150; i++) {
-  r = ((i + 1) * 12) % 254;
-  var bg = utils.toHexString(r, (255 - r), 128);
-  var view = Ti.UI.createView({
-    height: 200,
-    width: 200,
-    backgroundColor: bg,
-    borderColor: 'black',
-    borderWidth: 2,
-  });
-  view.add(Ti.UI.createLabel({
-    top: 10,
-    left: 10,
-    width: 48,
-    height: 24,
-    color: 'white',
-    text: String.format('%d', i),
-  }));
-  views.push(view);
+function createViews() {
+  for (i=0; i < 1000; i++) {
+    r = ((i + 1) * 12) % 254;
+    var bg = utils.toHexString(r, (255 - r), 128);
+    var view = Ti.UI.createView({
+      height: 200,
+      width: 200,
+      backgroundColor: bg,
+      borderColor: 'black',
+      borderWidth: 2,
+    });
+    var label = Ti.UI.createLabel({
+      top: 10,
+      left: 10,
+      width: 48,
+      height: 24,
+      color: 'black',
+      text: String.format('%d', i),
+      backgroundColor: 'yellow'
+    });
+    view.add(label);
+    
+    views.push(view);
+  }
 }
 
 function createTypePickerView(carousel) {
@@ -145,6 +150,7 @@ exports.createWindow = function() {
   });
   container.add(statusLabel);
 
+  createViews();
 	var carousel = TiCarousel.createCarouselView({
 	  top: 48,
     carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
@@ -153,9 +159,11 @@ exports.createWindow = function() {
     numberOfVisibleItems: 12,
     wrap: false,
 	});
-
+	
   carousel.addEventListener('select', function(e) {
     statusLabel.text = String.format('selectedIndex: %d, currentIndex: %d', e.selectedIndex, e.currentIndex);
+    var label = views[e.selectedIndex].children[0];
+    label.text = label.text;
   });
 
   var toolbar = createToolbar(container, typeLabel, carousel);
