@@ -107,11 +107,11 @@ exports.createWindow = function() {
   	layout: 'vertical',
   });
   
-  var views = [];
+  var items = [];
   for (r = 0; r < 256; r += 64) {
     for (g = 0; g < 256; g += 64) {
       for (b = 0; b < 256; b += 64) {
-        views.push(Ti.UI.createView({
+        items.push(Ti.UI.createView({
           height: 100,
           width: 100,
           backgroundColor: utils.toHexString(r, g, b),
@@ -126,7 +126,8 @@ exports.createWindow = function() {
     height: 120,
     itemWidth: 108,
     numberOfVisibleItems: 7,
-    views: views,
+    items: items,
+    scrollSpeed: 2.0,
   });
 
   win.add(carousel);

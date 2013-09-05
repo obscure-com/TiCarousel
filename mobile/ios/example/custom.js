@@ -12,12 +12,12 @@ exports.createWindow = function() {
   var label = Ti.UI.createLabel({ text: 'status' });
   win.add(label);
 
-  var views = [];
-  views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'blue' }));
-  views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'yellow' }));
-  views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'red' }));
-  views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }));
-  views.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'gray' }));
+  var items = [];
+  items.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'blue' }));
+  items.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'yellow' }));
+  items.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'red' }));
+  items.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'green' }));
+  items.push(Ti.UI.createView({ height: 60, width: 60, backgroundColor: 'gray' }));
 
 
   // build a custom transform matrix
@@ -51,7 +51,7 @@ exports.createWindow = function() {
   win.add(carousel);
 
   win.addEventListener('open', function(e) {
-    carousel.setViews(views);
+    carousel.setItems(items);
     carousel.reloadData();
   })
 

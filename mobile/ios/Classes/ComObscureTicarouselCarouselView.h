@@ -9,6 +9,11 @@
 #import "TiUIView.h"
 #import "iCarousel.h"
 
-@interface ComObscureTicarouselCarouselView : TiUIView <iCarouselDelegate>
-@property (nonatomic, strong) iCarousel * carousel;
+@interface ComObscureTicarouselCarouselView : TiUIView
+- (NSInteger)currentItemIndex;
+- (CGFloat)scrollOffset;
+
+- (void)setCarouselType:(id)args;
+- (void)scrollByNumberOfItems:(id)args;
+- (void)scrollToItemAtIndex:(id)args;
 @end

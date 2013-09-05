@@ -1,7 +1,7 @@
 
 var TiCarousel = require('com.obscure.ticarousel'),
     utils = require('./utils'),
-    views = [];
+    items = [];
 
 function createViews() {
   for (i=0; i < 1000; i++) {
@@ -25,7 +25,7 @@ function createViews() {
     });
     view.add(label);
     
-    views.push(view);
+    items.push(view);
   }
 }
 
@@ -154,7 +154,7 @@ exports.createWindow = function() {
 	var carousel = TiCarousel.createCarouselView({
 	  top: 48,
     carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
-    views: views,
+    items: items,
     itemWidth: 220,
     numberOfVisibleItems: 12,
     wrap: false,
@@ -162,7 +162,7 @@ exports.createWindow = function() {
 	
   carousel.addEventListener('select', function(e) {
     statusLabel.text = String.format('selectedIndex: %d, currentIndex: %d', e.selectedIndex, e.currentIndex);
-    var label = views[e.selectedIndex].children[0];
+    var label = items[e.selectedIndex].children[0];
     label.text = label.text;
   });
 

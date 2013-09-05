@@ -41,8 +41,7 @@ Create a simple carousel:
       width: Ti.UI.FILL,
       height: 200,
       itemWidth: 68,
-      numberOfVisibleItems: 5,
-      views: itemViews
+      items: itemViews
     });
 
     win.add(carousel);
@@ -81,6 +80,7 @@ Creates and returns an instance of a CarouselView.
 
 ### Functions
 
+<!--
 **indexOfItemView(Ti.UI.View view)** : Number
 
 Returns the index of the provided item view in the carousel.  This method only works
@@ -101,11 +101,24 @@ to calling this method.
 
 Returns the visible item view with the provided index.  This method returns null if the
 view at the specified index is not visible.
+-->
 
+**addItem(Ti.UI.View item)**
+
+Add the provided view to the end of the carousel.
+
+**insertItemAtIndex(Ti.UI.View item, Number index)**
+
+Inserts a new view item into the carousel and refreshes the display.  If the provided
+index is less than zero or more than the number of views already in the carousel, the
+new view is added at the end.
+
+<!--
 **offsetForItemAtIndex(Number index)** : Number
 
 Returns the positive or negative offset of the specified item index in multiples of
 `itemWidth` from the center position.
+-->
 
 **reloadData()**
 
@@ -114,16 +127,18 @@ if the carousel needs to be refreshed due to changes to properties or the underl
 data.  Properties and methods that require a call to `reloadData()` will indicate
 that in their documentation.
 
+<!--
 **reloadItemAtIndex(Number index, [Boolean animated])**
 
 Reload the item view at the specified index.  If `animated` is true, the carousel will
 cross-fade from the old item to the new item.
+-->
 
-**removeItemAtIndex(Number index)**
+**removeItem(Ti.UI.View item or Number index)**
 
-Remove the item at the specified index from the carousel.  This does *not* remove the
-item from the underlying view array, so a call to `reloadData()` will restore the view
-to the carousel.
+Remove the specified item from the carousel.  If a view is provided, that view will be
+removed if it is in the items array.  If a number is provided, the item at that index
+will be removed.  Refreshes the carousel.
 
 **scrollByNumberOfItems(Number count, Number duration)**
 
@@ -147,7 +162,7 @@ of the scroll or to scroll more than one full revolution, use **scrollByNumberOf
    Dictionary with the following scroll options:
    
    * `animated`: Boolean, default true.
-   * `duration`: Number, the duration of the scroll animation in seconds.
+   * `duration`: Number, the duration of the scroll animation in seconds, implies animated=true.
 
 ### Properties
 
@@ -155,12 +170,12 @@ of the scroll or to scroll more than one full revolution, use **scrollByNumberOf
 
 The maximum distance the carousel will bounce when it overshoots either end, measured
 in multiples of `itemWidth`.  This property only affects carousels which have the `wrap`
-property set to false.
+property set to false.  Default is 1.0.
 
 **bounces** : Boolean, read/write
 
 If true, the carousel will bounce past the end and return.  This only affects carousels
-which have the `wrap` property set to false.
+which have the `wrap` property set to false.  Default is true.
 
 **centerItemWhenSelected** : Boolean, read/write
 
@@ -193,7 +208,7 @@ The view that is currently centered in the carousel.
 
 The rate at which the carousel decelerates when flicked.  Value should be between 0.0
 (carousel stops immediately) and 1.0 (carousel continues indefinitely until it reaches
-the end).
+the end).  Default is 0.95.
 
 **ignorePerpendicularSwipes** : Boolean, read/write
 
@@ -207,6 +222,7 @@ The display width of the items in the carousel.  If a value is not provided, it 
 from the width of the first item view in the `views` array.  To add spacing between carousel
 items, set this property to a value greater than your item view width.
 
+<!--
 **numberOfItems** : Number, read-only
 
 The number of visible items in the carousel.
@@ -215,6 +231,7 @@ The number of visible items in the carousel.
 
 Tweaks the perspective foreshortening effect of the 3D carousel views.  Should be a negative
 number between 0 and -0.01; default is -0.005.
+-->
 
 **scrollEnabled** : Boolean, read/write
 
@@ -283,6 +300,16 @@ This event will not fire if the user taps a control within the currently selecte
 ## Transform Options
 
 Several of the built-in transforms can be customized using the transform options dictionary.
+The list below shows the carousel types and the options that each supports:
+
+* CAROUSEL\_TYPE\_LINEAR: none
+* CAROUSEL\_TYPE\_ROTARY, CAROUSEL\_TYPE\_INVERTED\_ROTARY: count, spacing, arc, radius
+* CAROUSEL\_TYPE\_CYLINDER, CAROUSEL\_TYPE\_INVERTED\_CYLINDER: count, spacing, arc, radius
+* CAROUSEL\_TYPE\_WHEEL, CAROUSEL\_TYPE\_INVERTED\_WHEEL: count, spacing, arc, radius
+* CAROUSEL\_TYPE\_COVER\_FLOW, CAROUSEL\_TYPE\_COVER\_FLOW2: tilt, spacing
+* CAROUSEL\_TYPE\_TIME\_MACHINE, CAROUSEL\_TYPE\_INVERTED\_TIME\_MACHINE: tilt, spacing
+* CAROUSEL\_TYPE\_BUMP: yoffset, zoffset
+
 Rotary and cylinder carousels can be adjusted using the `arc` and `radius` properties.
 For these carousel types, `arc` controls the curvature of the receding views on either side
 of the center and `radius` the width of the carousel.  Wheel carousels are also customized
@@ -360,16 +387,8 @@ the Titanium API or any objects that were created in your application's context.
 are fine, however, which is why we are setting a primitive named `itemWidth` in the example
 above.
 
-If you want to change the alpha transparency of the item view based on the offset, create a function
-that returns a value between 0.0 and 1.0 for each item based on offset.  Here's an alpha function that
-fades views which are more than one unit away from center to 60% opacity:
-
-    function alpha(offset) {
-      var absoffset = Math.abs(offset);
-      return absoffset < 1.0 ? (1.0 - 0.4 * absoffset) : 0.6;
-    }
-    
-    carousel.itemAlphaForOffset = alpha;
+If you want to change the alpha transparency of the item view based on the offset, set the `fadeMin`,
+`fadeMax`, and `fadeRange` values in the transform options dictionary.
 
 **Important Note**
 

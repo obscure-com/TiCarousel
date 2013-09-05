@@ -5,13 +5,11 @@ var TiCarousel = require('com.obscure.ticarousel'),
       radius: 500.0,
       tilt: 0.9,
       spacing: 1.0,
-      yoffset: 20.0,
-      zoffset: -400.0
     },
-    views = [];
+    items = [];
 
 for (i=0; i < 20; i++) {
-  // NOTE the views provided to the carousel cannot currently use
+  // NOTE the items provided to the carousel cannot currently use
   // Ti.UI.SIZE or Ti.UI.FILL (or 'auto', for that matter).
   r = ((i + 1) * 12);
   var bg = utils.toHexString(r, (255 - r), 128);
@@ -22,7 +20,7 @@ for (i=0; i < 20; i++) {
     borderColor: 'black',
     borderWidth: 2,
   });
-  views.push(view);
+  items.push(view);
 }
 
 function createTypePickerView(carousel) {
@@ -34,6 +32,7 @@ function createTypePickerView(carousel) {
   });
 
   var rows = [
+    Ti.UI.createPickerRow({ title: 'LINEAR', type: TiCarousel.CAROUSEL_TYPE_LINEAR }),
     Ti.UI.createPickerRow({ title: 'ROTARY', type: TiCarousel.CAROUSEL_TYPE_ROTARY }),
     Ti.UI.createPickerRow({ title: 'INVERTED_ROTARY', type: TiCarousel.CAROUSEL_TYPE_INVERTED_ROTARY }),
     Ti.UI.createPickerRow({ title: 'CYLINDER', type: TiCarousel.CAROUSEL_TYPE_CYLINDER }),
@@ -132,7 +131,7 @@ function createArcView(carousel) {
   result.add(label);
   
   var slider = Ti.UI.createSlider({
-    min: -2 * Math.PI,
+    min: 0,
     max: 2 * Math.PI,
     value: txopts.arc,
   });
@@ -166,6 +165,33 @@ function createRadiusView(carousel) {
   slider.addEventListener('change', function(e) {
     txopts.radius = e.value;
     label.text = String.format('radius: %.2f', txopts.radius);
+    carousel.transformOptions = txopts;
+    carousel.reloadData();
+  });
+  result.add(slider);
+  
+  return result;
+}
+
+function createSpacingView(carousel) {
+  var result = Ti.UI.createView({
+    layout: 'vertical',
+    height: Ti.UI.SIZE,
+  });
+  
+  var label = Ti.UI.createLabel({
+    text: String.format('spacing: %.2f', txopts.tilt)
+  })
+  result.add(label);
+  
+  var slider = Ti.UI.createSlider({
+    min: 0,
+    max: 4,
+    value: txopts.spacing,
+  });
+  slider.addEventListener('change', function(e) {
+    txopts.spacing = e.value;
+    label.text = String.format('spacing: %.2f', txopts.spacing);
     carousel.transformOptions = txopts;
     carousel.reloadData();
   });
@@ -219,9 +245,9 @@ exports.createWindow = function() {
   });
   
 	var carousel = TiCarousel.createCarouselView({
-    carouselType: TiCarousel.CAROUSEL_TYPE_ROTARY,
-    views: views,
-    height: 190,
+    carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
+    items: items,
+    height: 180,
     itemWidth: 108,
     numberOfVisibleItems: 12,
     wrap: false,
@@ -237,6 +263,7 @@ exports.createWindow = function() {
 
   win.add(createArcView(carousel));
   win.add(createRadiusView(carousel));
+  win.add(createSpacingView(carousel));
   win.add(createTiltView(carousel));
   win.add(toolbar);
 

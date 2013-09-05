@@ -1,3 +1,7 @@
 2012-05-16
 Initial release
 
+2013-09-05
+* Refactored the code to more closely resemble Ti.UI.ScrollableView, which appears to
+  increase stability.
+* Renamed the "views" property to "items".

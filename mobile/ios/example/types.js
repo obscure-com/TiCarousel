@@ -1,10 +1,10 @@
 
 var TiCarousel = require('com.obscure.ticarousel'),
     utils = require('./utils'),
-    views = [];
+    items = [];
 
 for (i=0; i < 20; i++) {
-  // NOTE the views provided to the carousel cannot currently use
+  // NOTE the items provided to the carousel cannot currently use
   // Ti.UI.SIZE or Ti.UI.FILL (or 'auto', for that matter).
   r = ((i + 1) * 12);
   var bg = utils.toHexString(r, (255 - r), 128);
@@ -23,7 +23,7 @@ for (i=0; i < 20; i++) {
     text: String.format('#%d', i),
     textAlign: 'center',
   }));
-  views.push(view);
+  items.push(view);
 }
 
 function createTypePickerView(carousel) {
@@ -150,7 +150,7 @@ exports.createWindow = function() {
 	var carousel = TiCarousel.createCarouselView({
 	  top: 48,
     carouselType: TiCarousel.CAROUSEL_TYPE_LINEAR,
-    views: views,
+    items: items,
     itemWidth: 220,
     numberOfVisibleItems: 12,
     wrap: false,
@@ -158,6 +158,7 @@ exports.createWindow = function() {
 
   carousel.addEventListener('select', function(e) {
     statusLabel.text = String.format('selectedIndex: %d, currentIndex: %d', e.selectedIndex, e.currentIndex);
+    Ti.API.info(String.format("currentItemIndex = %d", carousel.currentItemIndex));
   });
 
   var toolbar = createToolbar(container, typeLabel, carousel);

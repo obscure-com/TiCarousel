@@ -12,7 +12,7 @@ See the Wiki pages for usage instructions and the samples directory for example 
 
 ## Requirements
 
-* Titanium SDK 1.8.2 or later
+* Titanium SDK 3.1.2.GA or later
 * Xcode 4.2 or later to build
 * Runtime requirement is iOS 5+
 
@@ -22,6 +22,13 @@ See the Wiki pages for usage instructions and the samples directory for example 
 * iCarousel is Copyright (c) 2011 Charcoal Design.  See their license file.
 
 ## Development Status
+
+**1.1**
+
+* Reworked the view proxy so it manages views like TiUIScrollableView, appears to
+  fix the missing subviews problem.
+* *BREAKING* renamed the `views` property to `items`
+* Updated to iCarousel 1.7.6
 
 **1.0.1**
 
