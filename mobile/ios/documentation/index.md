@@ -2,7 +2,7 @@
 
 ## Description
 
-The TiTouchDB module wraps the [iCarousel](https://github.com/nicklockwood/iCarousel)
+The TiCarousel module wraps the [iCarousel](https://github.com/nicklockwood/iCarousel)
 library written by Nick Lockwood and provides a customizable, data-driven 3D carousel
 view for Titanium apps.
 
