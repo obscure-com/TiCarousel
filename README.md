@@ -12,9 +12,18 @@ See the Wiki pages for usage instructions and the samples directory for example 
 
 ## Requirements
 
-* Titanium SDK 1.8.2 or later
-* Xcode 4.2 or later to build
+* Titanium SDK 3.1.2 or later
+* Xcode 5.0 or later to build
 * Runtime requirement is iOS 5+
+
+## Building
+
+1. `git clone https://github.com/pegli/TiCarousel.git`
+2. `cd TiCarousel`
+3. `git submodule update --init`
+4. `cd mobile/ios`
+5. Edit `titanium.xcconfig` and set the Ti SDK version and paths if necessary.
+5. `./build.py`
 
 ## License
 
