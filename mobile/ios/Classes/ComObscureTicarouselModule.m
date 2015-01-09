@@ -38,7 +38,7 @@
 #pragma mark Cleanup 
 
 -(void)dealloc {
-	[super dealloc];
+	/*[super dealloc];*/
 }
 
 #pragma mark Internal Memory Management
