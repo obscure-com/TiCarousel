@@ -38,7 +38,7 @@
         self.numberOfVisibleItems = 3;
         self.doubleSided = [NSNumber numberWithBool:YES];
         
-        transformOptionNames = [[NSDictionary dictionaryWithObjectsAndKeys:
+        transformOptionNames = [NSDictionary dictionaryWithObjectsAndKeys:
                                 @"angle", [NSNumber numberWithInt:iCarouselOptionAngle],
                                 @"arc", [NSNumber numberWithInt:iCarouselOptionArc],
                                 @"count", [NSNumber numberWithInt:iCarouselOptionCount],
@@ -46,8 +46,7 @@
                                 @"spacing", [NSNumber numberWithInt:iCarouselOptionSpacing],
                                 @"tilt", [NSNumber numberWithInt:iCarouselOptionTilt],
                                 @"yoffset", [NSNumber numberWithInt:iCarouselOptionExYOffset],
-                                @"zoffset", [NSNumber numberWithInt:iCarouselOptionExZOffset],
-                                nil] retain];
+                                @"zoffset", [NSNumber numberWithInt:iCarouselOptionExZOffset], nil];
     }
     return self;
 }
@@ -56,9 +55,9 @@
     // clean up views
 	pthread_rwlock_destroy(&viewsLock);
 	[viewProxies makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
-	[viewProxies release];
-    [transformOptionNames release];
-    [super dealloc];
+	//[viewProxies release];
+    //[transformOptionNames release];
+    //[super dealloc];
 }
 
 - (iCarousel *)carousel {
@@ -96,7 +95,7 @@
 			[self forgetProxy:oldViewProxy];
 		}
 	}
-	[viewProxies autorelease];
+//	[viewProxies autorelease];
 	viewProxies = [args mutableCopy];
 	[self unlockViews];
 	[self replaceValue:args forKey:@"views" notification:YES];

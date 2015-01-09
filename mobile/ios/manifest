@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.1
+version: 1.2
 apiversion: 2
 description: module that wraps the iCarousel library by Nick Lockwood 
 author: Paul Mietz Egli
@@ -16,3 +16,4 @@ moduleid: com.obscure.ticarousel
 guid: 2295ea8d-38ef-4786-b48b-b76c27e14fbb
 platform: iphone
 minsdk: 2.0.1.GA2
+architectures: armv7 i386 x86_64 arm64

@@ -21,8 +21,7 @@
 - (void)dealloc {
     self.carousel.delegate = nil;
     self.carousel.dataSource = nil;
-    
-    [super dealloc];
+ /*   [super dealloc]; */
 }
 
 - (void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds {
@@ -30,14 +29,12 @@
     [TiUtils setView:self.carousel positionRect:bounds];
 }
 
-
 - (iCarousel *)carousel {
     if (!_carousel) {
         _carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, [self bounds].size.width, [self bounds].size.height)];
         _carousel.type = iCarouselTypeLinear;
         _carousel.delegate = (id<iCarouselDelegate>) self.proxy;
         _carousel.dataSource = (id<iCarouselDataSource>) self.proxy;
-        
         _carousel.clipsToBounds = YES; // never overflow the carousel bounds
     }
     if (_carousel.superview != self) {
