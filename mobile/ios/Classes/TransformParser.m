@@ -23,7 +23,7 @@
                 transform = CATransform3DTranslate(transform, [[values objectAtIndex:0] floatValue], [[values objectAtIndex:1] floatValue], [[values objectAtIndex:2] floatValue]);
             }
             else {
-                NSLog(@"[ERROR] incorrect number of values (%d), skipping translate", [values count]);
+                NSLog(@"[ERROR] incorrect number of values (%lu), skipping translate", [values count]);
             }
         }
         else if ([@"rotate" isEqualToString:type]) {
@@ -31,7 +31,7 @@
                 transform = CATransform3DRotate(transform, [[values objectAtIndex:0] floatValue], [[values objectAtIndex:1] floatValue], [[values objectAtIndex:2] floatValue], [[values objectAtIndex:3] floatValue]);
             }
             else {
-                NSLog(@"[ERROR] incorrect number of values (%d), skipping rotate", [values count]);
+                NSLog(@"[ERROR] incorrect number of values (%lu), skipping rotate", [values count]);
             }
         }
         else if ([@"scale" isEqualToString:type]) {
@@ -39,7 +39,7 @@
                 transform = CATransform3DScale(transform, [[values objectAtIndex:0] floatValue], [[values objectAtIndex:1] floatValue], [[values objectAtIndex:2] floatValue]);
             }
             else {
-                NSLog(@"[ERROR] incorrect number of values (%d), skipping scale", [values count]);
+                NSLog(@"[ERROR] incorrect number of values (%lu), skipping scale", [values count]);
             }
         }
     }
