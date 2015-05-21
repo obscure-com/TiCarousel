@@ -1,3 +1,4 @@
 [submodule "mobile/ios/vendor/iCarousel"]
 	path = mobile/ios/vendor/iCarousel
 	url = git@github.com:pegli/iCarousel.git
+	branch = master
