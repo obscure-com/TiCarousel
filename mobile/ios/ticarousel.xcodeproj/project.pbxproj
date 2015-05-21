@@ -23,20 +23,20 @@
 
 /* Begin PBXBuildFile section */
 		24DD6CF91134B3F500162E58 /* ComObscureTicarouselModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComObscureTicarouselModule.h */; };
-		24DD6CFA1134B3F500162E58 /* ComObscureTicarouselModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComObscureTicarouselModule.m */; };
+		24DD6CFA1134B3F500162E58 /* ComObscureTicarouselModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComObscureTicarouselModule.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AA747D9F0F9514B9006C5449 /* ComObscureTicarousel_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComObscureTicarousel_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		DAA4DCA51562AFA000192EA3 /* TransformParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA4DCA31562AFA000192EA3 /* TransformParser.h */; };
-		DAA4DCA61562AFA000192EA3 /* TransformParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4DCA41562AFA000192EA3 /* TransformParser.m */; };
+		DAA4DCA61562AFA000192EA3 /* TransformParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4DCA41562AFA000192EA3 /* TransformParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DAEF8D62155C1ADA0053A8FA /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D60155C1ADA0053A8FA /* iCarousel.h */; };
 		DAEF8D63155C1ADA0053A8FA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D61155C1ADA0053A8FA /* iCarousel.m */; };
 		DAEF8D65155C1B0F0053A8FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D64155C1B0F0053A8FA /* QuartzCore.framework */; };
 		DAEF8D67155C1B140053A8FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D66155C1B140053A8FA /* UIKit.framework */; };
 		DAEF8D69155C1B1A0053A8FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEF8D68155C1B1A0053A8FA /* CoreGraphics.framework */; };
 		DAEF8D6C155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D6A155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.h */; };
-		DAEF8D6D155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6B155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.m */; };
+		DAEF8D6D155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6B155C1E770053A8FA /* ComObscureTicarouselCarouselViewProxy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DAEF8D70155C1F030053A8FA /* ComObscureTicarouselCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = DAEF8D6E155C1F030053A8FA /* ComObscureTicarouselCarouselView.h */; };
-		DAEF8D71155C1F030053A8FA /* ComObscureTicarouselCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6F155C1F030053A8FA /* ComObscureTicarouselCarouselView.m */; };
+		DAEF8D71155C1F030053A8FA /* ComObscureTicarouselCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF8D6F155C1F030053A8FA /* ComObscureTicarouselCarouselView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,7 +200,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "ticarousel" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -267,15 +267,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DSTROOT = /tmp/ComObscureTicarousel.dst;
@@ -306,7 +297,6 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -316,15 +306,6 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/ComObscureTicarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -343,13 +324,11 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ComObscureTicarousel;
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -358,15 +337,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DSTROOT = /tmp/ComObscureTicarousel.dst;
@@ -387,7 +358,8 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
@@ -407,15 +379,7 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/ComObscureTicarousel.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -434,7 +398,7 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ComObscureTicarousel;

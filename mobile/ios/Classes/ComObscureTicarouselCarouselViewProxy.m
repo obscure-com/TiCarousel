@@ -117,7 +117,7 @@
 #pragma mark iCarousel Properties
 
 - (id)currentItemIndex {
-    return NUMINT(self.carousel.currentItemIndex);
+    return NUMLONG(self.carousel.currentItemIndex);
 }
 
 - (id)carouselType {
@@ -209,11 +209,11 @@
 }
 
 - (id)numberOfItems {
-    return NUMINT(self.carousel.numberOfItems);
+    return NUMLONG(self.carousel.numberOfItems);
 }
 
 - (id)numberOfPlaceholders {
-    return NUMINT(self.carousel.numberOfPlaceholders);
+    return NUMLONG(self.carousel.numberOfPlaceholders);
 }
 
 - (id)scrollOffset {
@@ -348,7 +348,7 @@
     ENSURE_ARG_AT_INDEX(v, args, 0, TiUIView)
     
     NSInteger result = [self.carousel indexOfItemView:v];
-    return result != NSNotFound ? NUMINT(result) : nil;
+    return result != NSNotFound ? NUMLONG(result) : nil;
 }
 
 - (id)indexOfItemViewOrSubview:(id)args {
@@ -357,7 +357,7 @@
     TiUIView * v;
     ENSURE_ARG_AT_INDEX(v, args, 0, TiUIView)
     
-    return NUMINT([self.carousel indexOfItemViewOrSubview:v]);
+    return NUMLONG([self.carousel indexOfItemViewOrSubview:v]);
 }
 
 - (id)offsetForItemAtIndex:(id)args {
@@ -483,22 +483,22 @@
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          NUMINT(carousel.currentItemIndex), @"currentIndex",
+                          NUMLONG(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselScrollEvent withObject:obj];
 }
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          NUMINT(carousel.currentItemIndex), @"currentIndex",
+                          NUMLONG(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselChangeEvent withObject:obj];
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
     NSDictionary * obj = [NSDictionary dictionaryWithObjectsAndKeys:
-                          NUMINT(index), @"selectedIndex",
-                          NUMINT(carousel.currentItemIndex), @"currentIndex",
+                          NUMLONG(index), @"selectedIndex",
+                          NUMLONG(carousel.currentItemIndex), @"currentIndex",
                           nil];
     [self fireEvent:kCarouselSelectEvent withObject:obj];
 }
